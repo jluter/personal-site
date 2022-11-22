@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Header.scss';
-import Headshot from '../../assets/profile-pic.jpg';
+import Headshot from '../../assets/images/profile-pic.jpg';
 
 
 const Header: React.FC = (props) => {
