@@ -1,0 +1,12 @@
+@use './typography' as *;
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $archivo, sans-serif;
+    margin: 0 auto;
+    background-color: grey;
+
+}

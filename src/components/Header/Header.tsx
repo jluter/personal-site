@@ -1,21 +1,26 @@
 import React, { useState } from 'react';
 import './Header.scss';
-import Headshot from '../../assets/images/profile-pic.jpg';
+// import Headshot from '../../assets/images/profile-pic.jpg';
 
 
 const Header: React.FC = (props) => {
 
 
-    return <header>
-        <figure>
+    return <header className='header'>
+        {/* <figure>
             <img src={Headshot} alt="site-logo"/>
-        </figure>
-        <nav>
-            <ul>
-                <li>About</li>
-                <li>Projects</li>
-            </ul>
-        </nav>
+        </figure> */}
+        <div>
+            <h1>Jakob<br />Luter</h1>
+            <nav>
+                <ul>
+                    <li>About Me</li>
+                    <li>Email</li>
+                    <li>LinkedIn</li>
+                    <li>GitHub</li>
+                </ul>
+            </nav>
+        </div>
     </header>;
 }
 
