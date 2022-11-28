@@ -2,6 +2,12 @@ import React from 'react';
 import './LineAnimation.scss';
 
 const LineAnimation: React.FC = () => {
+
+    function getRandomCoordinates(min: number, max: number) {
+        return Math.random() * (max - min) + min;
+    }
+
+
     return (
       <div id="footer-navmenu">
         <svg
@@ -19,18 +25,16 @@ const LineAnimation: React.FC = () => {
           </defs>
           <g className="wave-bg">
             <use
-              fill="rgba(242,193,78,.5)"
-              x="50"
+              x='50'
               xlinkHref="#gentle-wave"
-              y="0"
+              y={getRandomCoordinates(-2, 0)}
             />
             <use
-              fill="rgba(242,193,78,.7)"
-              x="50"
+              x='50'
               xlinkHref="#gentle-wave"
-              y="3"
+              y={getRandomCoordinates(0.5, 3)}
             />
-            <use fill="#344E41" x="50" xlinkHref="#gentle-wave" y="6" />
+            <use x='50' xlinkHref="#gentle-wave" y={getRandomCoordinates(4, 8)} />
           </g>
         </svg>
       </div>

@@ -1,23 +1,21 @@
 @use '../../styles/variables' as *;
 
-/* Footer Wave Animations by Firefudh.net */
 #footer-navmenu .wave-animation {
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
     transform: rotate(180deg);
     bottom: initial;
     top: 0;
-    height: 5em
+    //Adjust overall height
+    height: 10rem
 }
 
 #footer-navmenu {
-    padding-top: 50px;
-    background: linear-gradient(to right, #654ea3, #eaafc8);
+    // padding-top: 50px;
+    background: linear-gradient(to right, $hunter-green, $fern-green);
     position: relative;
  }
 
 #footer-navmenu-container {
-    max-width: 1000px;
+    max-width: 100%;
     margin: 0 auto;
     text-align: center
 }
@@ -37,39 +35,39 @@
 }
 
 #footer-container {
-    background: linear-gradient(to right, #654ea3, #eaafc8);
+    background: linear-gradient(to right, $hunter-green, $fern-green);
 }
 
 /* Wave Animation */
 .wave-animation {
     display: block;
     width: 100%;
-    height: 8em;
+    height: 8rem;
     max-height: 100vh;
     margin: 0;
     position: absolute;
-    bottom: -10px
+    bottom: -1rem;
 }
 
 .wave-bg>use {
-    -webkit-animation: move-forever 20s linear infinite;
-    animation: move-forever 20s linear infinite
+    animation: move-forever 25s linear infinite
 }
 
 .wave-bg>use:nth-child(1) {
     animation-delay: -2s;
-    fill: rgba(232, 174, 199, 0.58);
+    fill: $fern-green;
 }
 
 .wave-bg>use:nth-child(2) {
     animation-delay: -2s;
     animation-duration: 10s;
-    fill: rgba(232, 174, 199, 0.85);
+    fill: $laurel-green;
 }
 
 .wave-bg>use:nth-child(3) {
     animation-delay: -4s;
-    animation-duration: 8s
+    animation-duration: 8s;
+    fill: $brunswick-green;
 }
 
 @-webkit-keyframes move-forever {
@@ -93,9 +91,9 @@
 }
 
 .wave-animation {
-    height: 3em
+    height: 3rem
 }
 
 .wave-animation {
-    height: 4em
+    height: 4rem
 }
