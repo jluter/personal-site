@@ -21,3 +21,12 @@ a {
         color: $fern-green;
     }
 }
+
+@keyframes test {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

@@ -9,6 +9,10 @@
     margin: 0;
     text-align: right;
     font-size: 2rem;
+
+    @include mixins.tablet {
+        @include mixins.fade-in(2s)
+    }
 }
 
 .subtitle {
@@ -16,6 +20,10 @@
 
     @include mixins.small-mobile {
         font-size: 1rem;
+    }
+
+    @include mixins.tablet {
+        font-size: 1.5rem;
     }
 }
 
