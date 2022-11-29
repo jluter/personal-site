@@ -32,9 +32,9 @@ const LineAnimation: React.FC = () => {
             <use
               x='50'
               xlinkHref="#gentle-wave"
-              y={getRandomCoordinates(0.5, 2)}
+              y={getRandomCoordinates(0.5, 1.5)}
             />
-            <use x='50' xlinkHref="#gentle-wave" y={getRandomCoordinates(2.5, 5)} />
+            <use x='50' xlinkHref="#gentle-wave" y={getRandomCoordinates(1.6, 2.99)} />
           </g>
         </svg>
       </div>
