@@ -18,6 +18,7 @@
   }
 }
 
+//Fade-in animation that takes a number value in seconds
 @mixin fade-in($delay) {
 
   animation: fade-in 2s linear 1 $delay normal forwards;

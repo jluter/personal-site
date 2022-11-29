@@ -15,8 +15,9 @@
         gap: 0;
         justify-content: space-evenly;
         margin-top: 8rem;
-        animation: fade-in 2s linear 1 4s normal forwards;
-        opacity: 0;
+        @include mixins.tablet {
+            @include mixins.fade-in(4s)
+        }
     }
 }
 
@@ -34,14 +35,6 @@
     }
 }
 
-@keyframes fade-in {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
 
 .about-me-description {
     max-width: 20rem; 
@@ -50,6 +43,5 @@
         max-width: 25rem;
         line-height: 1.7rem;
         font-size: 1.5rem;
-
     }
 }
