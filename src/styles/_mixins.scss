@@ -10,11 +10,17 @@
     @media screen and (min-width: $tablet-breakpoint) {
       @content;
     }
-  }
-  
+}  
+
 @mixin desktop {
   @media screen and (min-width: $desktop-breakpoint) {
      @content;
+  }
+}
+
+@mixin tall-screen {
+  @media screen and (min-height: 1151px) {
+    @content
   }
 }
 
@@ -24,7 +30,9 @@
   }
 }
 
-//Fade-in animation that takes a number value in seconds
+// Fade-in animation that takes a number value in seconds
+
+
 @mixin fade-in($delay) {
 
   animation: fade-in 2s linear 1 $delay normal forwards;

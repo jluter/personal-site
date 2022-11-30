@@ -3,14 +3,22 @@
 
 .header {
     padding: 2rem;
+    padding-bottom: 0;
+
+    @include mixins.desktop {
+        padding-top: 3rem;
+    }
 }
 
 .title {
     margin: 0;
     text-align: right;
     font-size: 2rem;
-    @include mixins.fade-in(2s)
+    @include mixins.fade-in(2s);
 
+    @include mixins.desktop {
+        font-size: 4rem;
+    }
 
 }
 
@@ -25,6 +33,11 @@
     @include mixins.tablet {
         font-size: 1.5rem;
         line-height: 1.5rem;
+    }
+
+    @include mixins.desktop {
+        font-size: 2.5rem;
+        line-height: 3rem;
     }
 }
 

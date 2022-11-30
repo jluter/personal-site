@@ -6,7 +6,14 @@
     bottom: 0;
     height: 5rem;
     width: 100%;
-    // background-color: $fern-green;
+
+    @include mixins.desktop {
+        position: relative;
+
+        @include mixins.tall-screen {
+            position: absolute;
+        }
+    }
 
     &__nav {
         display: flex;

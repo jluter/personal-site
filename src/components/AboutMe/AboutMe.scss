@@ -58,5 +58,7 @@
 
     @include mixins.desktop {
         max-width: 80%;
+        font-size: 3rem;
+        line-height: 4rem;
     }
 }
