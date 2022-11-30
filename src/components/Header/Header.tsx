@@ -7,7 +7,11 @@ import { HiMail } from 'react-icons/hi';
 
 const Header: React.FC = (props) => {
   
-    const width = window.innerWidth;
+    const windowWidth: number = window.innerWidth;
+
+    // const setIconSize = (width: number) => {
+    //   (width > 767) ? '3rem' : '2rem'
+    // }
 
 
   return (
@@ -19,7 +23,7 @@ const Header: React.FC = (props) => {
         <h1 className="title">Hello, I'm Jakob</h1>
         <div className='subtitle-container'>
         <h3 className="subtitle">
-          A Full-Stack Developer making {(width > 440) ? <br /> : null} responsive websites.
+          A Full-Stack Developer making {(windowWidth > 440) ? <br /> : null} responsive websites.
         </h3>
         <nav className="navbar">
           <ul className="navbar__list">
@@ -29,7 +33,7 @@ const Header: React.FC = (props) => {
                 target="_blank"
                 href="https://www.linkedin.com/in/jakob-luter/"
               >
-                <SiLinkedin size="2rem" />
+                <SiLinkedin size={(windowWidth > 767) ? '2.5rem' : '2rem'} />
               </a>
             </li>
             <li className="navbar__item">
@@ -38,7 +42,7 @@ const Header: React.FC = (props) => {
                 target="_blank"
                 href="https://github.com/jluter"
               >
-                <SiGithub size="2rem" />
+                <SiGithub size={(windowWidth > 767) ? '2.5rem' : '2rem'} />
               </a>
             </li>
           </ul>
