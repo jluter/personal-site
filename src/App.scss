@@ -1,5 +1,9 @@
-body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
+@use './styles/variables' as *;
+@use './styles/mixins';
+
+.main-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
