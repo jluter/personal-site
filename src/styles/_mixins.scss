@@ -18,6 +18,12 @@
   }
 }
 
+@mixin short-screen {
+  @media screen and (max-height: 699px) {
+    @content
+  }
+}
+
 //Fade-in animation that takes a number value in seconds
 @mixin fade-in($delay) {
 

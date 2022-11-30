@@ -9,15 +9,18 @@
     flex-direction: column;
     align-items: center;
     gap: 5rem;
+    @include mixins.fade-in(4s);
 
     @include mixins.tablet {
         flex-direction: row;
         gap: 0;
         justify-content: space-evenly;
         margin-top: 8rem;
-        @include mixins.tablet {
-            @include mixins.fade-in(4s)
-        }
+    }
+
+    @include mixins.desktop {
+        width: 50%;
+        margin-top: 10rem;
     }
 }
 
