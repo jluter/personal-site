@@ -70,15 +70,7 @@
     fill: $brunswick-green;
 }
 
-@-webkit-keyframes move-forever {
-    0% {
-        transform: translate(-90px, 0%)
-    }
 
-    100% {
-        transform: translate(85px, 0%)
-    }
-}
 
 @keyframes move-forever {
     0% {
@@ -88,12 +80,4 @@
     100% {
         transform: translate(85px, 0%)
     }
-}
-
-.wave-animation {
-    height: 3rem
-}
-
-.wave-animation {
-    height: 4rem
 }
