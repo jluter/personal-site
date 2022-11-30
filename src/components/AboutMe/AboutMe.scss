@@ -19,9 +19,13 @@
     }
 
     @include mixins.desktop {
+        flex-direction: column;
         width: 50%;
-        margin-top: 10rem;
+        margin-top: 0;
+        align-items: flex-start;
+        justify-content: center;
     }
+
 }
 
 .about-me-photo {
@@ -36,6 +40,10 @@
     @include mixins.tablet {
         margin: 0;
     }
+
+    @include mixins.desktop {
+        justify-self: flex-start;
+    }
 }
 
 
@@ -46,5 +54,9 @@
         max-width: 25rem;
         line-height: 1.7rem;
         font-size: 1.5rem;
+    }
+
+    @include mixins.desktop {
+        max-width: 80%;
     }
 }

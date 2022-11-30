@@ -1,5 +1,9 @@
-body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
+@use './styles/mixins';
+
+.main-container {
+    @include mixins.desktop {
+        display: flex;
+        margin: 9rem;
+    }
 }
 
