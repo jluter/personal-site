@@ -1,24 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Header.scss';
 import { SiGithub, SiLinkedin } from 'react-icons/si';
-import { HiMail } from 'react-icons/hi';
-// import Headshot from '../../assets/images/profile-pic.jpg';
 
 
 const Header: React.FC = (props) => {
   
     const windowWidth: number = window.innerWidth;
 
-    // const setIconSize = (width: number) => {
-    //   (width > 767) ? '3rem' : '2rem'
-    // }
-
 
   return (
     <header className="header">
-      {/* <figure>
-            <img src={Headshot} alt="site-logo"/>
-        </figure> */}
       <div>
         <h1 className="title">Hello, I'm Jakob</h1>
         <div className='subtitle-container'>

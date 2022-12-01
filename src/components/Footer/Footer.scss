@@ -2,8 +2,8 @@
 @use '../../styles/mixins';
 
 .footer {
-    position: absolute;
-    bottom: 0;
+    position: relative;
+    bottom: -1rem;
     height: 5rem;
     width: 100%;
 

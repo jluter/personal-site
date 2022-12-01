@@ -3,7 +3,6 @@ import './DesktopDescription.scss';
 
 const DesktopDescription: React.FC = () => {
 
-    const windowWidth: number = window.innerWidth;
 
     return (
       <div className="desktop-description">
