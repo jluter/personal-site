@@ -6,6 +6,7 @@ import LineAnimation from './Components/LineAnimation/LineAnimation';
 import AboutMe from './Components/AboutMe/AboutMe';
 import Footer from './Components/Footer/Footer';
 import DesktopDescription from './Components/DesktopDescription/DesktopDescription';
+import ThreejsScene from './Components/ThreejsScene/ThreejsScene';
 
 const App: React.FC = () => {
   return (<div>
@@ -16,6 +17,9 @@ const App: React.FC = () => {
     <DesktopDescription />
     </main>
     <Footer />
+    <>
+    <ThreejsScene />
+    </>
   </div>
   )
 }

@@ -1,11 +1,12 @@
 import React from 'react';
 import './AboutMe.scss';
+import Headshot from '../../assets/images/headshot.jpg';
 
 const AboutMe: React.FC = () => {
     return (
       <div className="about-me-container">
         <div>
-            <img className="about-me-photo" src="https://i.postimg.cc/ZnMcDY10/plant-branch.jpg" alt="Plant Branch"/>
+            <img className="about-me-photo" src={Headshot} alt="Plant Branch"/>
         </div>
         <div>
             <p className='about-me-description'>
