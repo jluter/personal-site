@@ -17,9 +17,7 @@ const App: React.FC = () => {
     <DesktopDescription />
     </main>
     <Footer />
-    <>
     <ThreejsScene />
-    </>
   </div>
   )
 }
