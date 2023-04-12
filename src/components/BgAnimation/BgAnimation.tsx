@@ -1,5 +1,7 @@
 import React from 'react';
 
+
+
 const BgAnimation: React.FC = () => {
 
 //P5.JS CODE BELOW--------------
@@ -39,11 +41,11 @@ const BgAnimation: React.FC = () => {
 //   function y2(t){
 //     return cos(t/15)*25+cos(t/25)*25+cos(t/35)*25;
 //   }
-  
+
   
     return (
         <div>
-            
+
         </div>
     );
 };
