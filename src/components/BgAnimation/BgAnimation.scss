@@ -1,0 +1,7 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins';
+
+.react-p5-wrapper {
+    position: absolute;
+    top: 0;
+}
