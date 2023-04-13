@@ -3,7 +3,12 @@ import { ReactP5Wrapper, Sketch } from "react-p5-wrapper";
 import './BgAnimation.scss';
 
 
-const BgAnimation: React.FC = () => {
+interface BgAnimationProps {
+    width: number;
+    height: number;
+  }
+
+const BgAnimation: React.FC<BgAnimationProps> = ({width, height}) => {
   const [windowWidth, setWindoWidth] = useState(window.innerWidth);
   const [windowHeight, setWindoHeight] = useState(window.innerHeight);
 
