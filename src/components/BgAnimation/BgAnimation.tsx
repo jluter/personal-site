@@ -1,53 +1,46 @@
-import React from 'react';
+import React from "react";
+import { ReactP5Wrapper, Sketch } from "react-p5-wrapper";
 
+const sketch: Sketch = (p5) => {
+  let numPoints: number = 500;
+  let points: any = [];
+  let amplitude: any = [];
+  let width: number = 2000;
+  let height: number = 400;
+
+  p5.setup = () => {
+      p5.createCanvas(width, height);
+      for (let i=0; i < numPoints; i++) {
+          let x: number = p5.map(i, 0, numPoints-1, 0, width); //2000 is the width of the canvas.
+          let y: number = height/2 + p5.random(-height/5, height/5) * p5.sin(p5.map(i, 0, numPoints-1, 0, 3*p5.PI)) * p5.map(p5.abs(i-numPoints/2), 0, numPoints/2, 1, 0.2);
+          let a = p5.random(10,50);
+          amplitude.push(a);
+          points.push({x, y})
+      }       
+  }
+
+  p5.draw = () => {
+    p5.background(0);
+    p5.noStroke();
+    p5.fill(255);
+    for (let i = 0; i < numPoints; i++) {
+      let x = points[i].x;
+      let y = points[i].y;
+      let a = amplitude[i];
+
+      const xAngle = p5.map(p5.mouseX, 0, width, -4 * p5.PI, 4 * p5.PI, true);
+      const yAngle = p5.map(p5.mouseY, 0, width, -6 * p5.PI, 4 * p5.PI, true);
+
+      points[i].y += a * p5.sin(((p5.frameCount/50)/2 + i)*10) * 0.025;
+      points[i].x += a * p5.sin(((p5.frameCount/50)/2 + i)*xAngle) * 0.025;
+      p5.ellipse(x, points[i].y + (yAngle/3 * xAngle/3),2);
+    }
+  }
+};
 
 
 const BgAnimation: React.FC = () => {
-
-//P5.JS CODE BELOW--------------
-// function setup(){
-//     createCanvas(720,400);
-//   }
-  
-//   // the parameter at which x and y depends is usually taken as either t or symbol of theta
-//   let t = 0;
-//   function draw(){
-//     background(0);
-//     translate(width/2,height/2);
-//     stroke((255));
-//     strokeWeight(1);
-//     //loop for adding 100 lines
-//     for(let i = 0;i<100;i++){
-//       line(x1(t+i),y1(t+i),x2(t+i)*0.5,y2(t+i)*0.5);
-//     }
-//     t+=0.10;
-//   }
-//   // function to change initial x co-ordinate of the line
-//   function x1(t){
-//     return sin(t/10)*125+sin(t/20)*125+sin(t/30)*125;
-//   }
-  
-//   // function to change initial y co-ordinate of the line
-//   function y1(t){
-//     return cos(t/10)*125+cos(t/20)*125+cos(t/30)*125;
-//   }
-  
-//   // function to change final x co-ordinate of the line
-//   function x2(t){
-//     return sin(t/15)*125+sin(t/25)*125+sin(t/35)*125;
-//   }
-  
-//   // function to change final y co-ordinate of the line
-//   function y2(t){
-//     return cos(t/15)*25+cos(t/25)*25+cos(t/35)*25;
-//   }
-
-  
-    return (
-        <div>
-
-        </div>
-    );
+  return <ReactP5Wrapper sketch={sketch} />;
 };
 
 export default BgAnimation;
