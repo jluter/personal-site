@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { ReactP5Wrapper, Sketch } from "react-p5-wrapper";
 import './BgAnimation.scss';
 
@@ -6,37 +6,27 @@ import './BgAnimation.scss';
 interface BgAnimationProps {
     width: number;
     height: number;
+    mainElementWidth: number;
+    mainElementHeight: number;
   }
 
-const BgAnimation: React.FC<BgAnimationProps> = ({width, height}) => {
-  const [windowWidth, setWindoWidth] = useState(window.innerWidth);
-  const [windowHeight, setWindoHeight] = useState(window.innerHeight);
+const BgAnimation: React.FC<BgAnimationProps> = ({width, height, mainElementHeight, mainElementWidth}) => {
 
-  useEffect(() => {
-    function handleResize() {
-      setWindoWidth(window.innerWidth);
-      setWindoHeight(window.innerHeight);
-    }
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+    console.log("!", width, "?", mainElementWidth)
 
   //p5 Animation as a function --------------
   const sketch: Sketch = (p5) => {
     let numPoints: number = 500;
     let points: any = [];
     let amplitude: any = [];
-    let width: number = windowWidth;
-    let height: number = windowHeight;
 
     p5.setup = () => {
-      p5.createCanvas(width, height);
+      p5.createCanvas(mainElementWidth, mainElementHeight);
       for (let i = 0; i < numPoints; i++) {
-        let x: number = p5.map(i, 0, numPoints - 1, 0, width); //2000 is the width of the canvas.
+        let x: number = p5.map(i, 0, numPoints - 1, 0, mainElementWidth); //2000 is the mainElementWidth of the canvas.
         let y: number =
-          height / 2 +
-          p5.random(-height / 5, height / 5) *
+          mainElementHeight / 2 +
+          p5.random(-mainElementHeight / 5, mainElementHeight / 5) *
             p5.sin(p5.map(i, 0, numPoints - 1, 0, 3 * p5.PI)) *
             p5.map(p5.abs(i - numPoints / 2), 0, numPoints / 2, 1, 0.2);
         let a = p5.random(10, 50);
@@ -50,11 +40,11 @@ const BgAnimation: React.FC<BgAnimationProps> = ({width, height}) => {
       p5.clear();
       p5.noStroke();
       p5.fill(300);
-      const xAngle = p5.map(p5.mouseX, 0, width, -4 * p5.PI, 4 * p5.PI, true);
-      const yAngle = p5.map(p5.mouseY, 0, width, -6 * p5.PI, 4 * p5.PI, true);
+      const xAngle = p5.map(p5.mouseX, 0, mainElementWidth, -4 * p5.PI, 4 * p5.PI, true);
+      const yAngle = p5.map(p5.mouseY, 0, mainElementWidth, -6 * p5.PI, 4 * p5.PI, true);
       for (let i = 0; i < numPoints; i++) {
         let x = points[i].x;
-        let y = points[i].y;
+        // let y = points[i].y;
         let a = amplitude[i];
 
 

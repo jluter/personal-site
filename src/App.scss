@@ -2,10 +2,11 @@
 
 .main-container {
     border: 1px solid black;
+    position: relative;
+    overflow: hidden;
     @include mixins.desktop {
         display: flex;
-        margin: 9rem;
-        margin-bottom: 3rem;
+        margin: 3rem;
     }
 }
 
