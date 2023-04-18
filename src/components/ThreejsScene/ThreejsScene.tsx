@@ -27,7 +27,26 @@ const ThreejsScene: React.FC = () => {
     }
 
     const geometry = new THREE.SphereGeometry( 1, 30, 30);
-    const material = new THREE.MeshBasicMaterial ( {color: 0x00ff00} );
+
+    const vertexShader = `
+  void main() {
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+  }
+`;
+
+    const fragmentShader = `
+  void main() {
+    gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+  }
+`;
+
+
+    const material = new THREE.ShaderMaterial ({
+      vertexShader,
+      fragmentShader
+    });
+
+
     const sphere = new THREE.Mesh (geometry, material);
     scene.add(sphere);
 
@@ -50,7 +69,6 @@ const ThreejsScene: React.FC = () => {
 
     animate();
 
-    const test2 = document.getElementById("test2")
 
     return () => {
       if (canvas) {
@@ -60,7 +78,7 @@ const ThreejsScene: React.FC = () => {
   }, []);
 
   return (
-      <div id="test2" ref={canvasRef}></div>
+      <div ref={canvasRef}></div>
   );
 };
 
