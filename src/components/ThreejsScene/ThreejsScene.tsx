@@ -26,16 +26,16 @@ const ThreejsScene: React.FC = () => {
 
     }
 
-    const geometry = new THREE.BoxGeometry( 1, 2, 1.5);
+    const geometry = new THREE.SphereGeometry( 1, 30, 30);
     const material = new THREE.MeshBasicMaterial ( {color: 0x00ff00} );
-    const cube = new THREE.Mesh (geometry, material);
-    scene.add(cube);
+    const sphere = new THREE.Mesh (geometry, material);
+    scene.add(sphere);
 
     const animate = () => {
       requestAnimationFrame( animate );
 
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
+      sphere.rotation.x += 0.01;
+      sphere.rotation.y += 0.01;
 
       renderer.render( scene, camera );
     }
