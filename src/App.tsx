@@ -18,6 +18,10 @@ const App: React.FC = () => {
     function handleResize() {
       setWindoWidth(window.innerWidth);
       setWindoHeight(window.innerHeight);
+      if (mainElementRef.current) {
+      setElementHeight(mainElementRef.current.clientHeight);
+      setElementWidth(mainElementRef.current.clientWidth);
+    }
     }
 
     window.addEventListener("resize", handleResize);
