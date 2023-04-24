@@ -43,7 +43,10 @@ const App: React.FC = () => {
     <main ref={mainElementRef} className='main-container'>
     <BgAnimation mainElementWidth={mainElementWidth} mainElementHeight={mainElementHeight} width={windowWidth} height={windowHeight}/>
     <AboutMe />
+    <DesktopDescription />
+    <ThreejsScene />
     </main>
+    <Footer />
   </div>
   )
 }
