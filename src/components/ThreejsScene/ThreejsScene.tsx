@@ -170,20 +170,27 @@ const ThreejsScene: React.FC = () => {
 
 
 
-        float light = dot(vNormal, normalize(vec3(1.0))) * 0.5 + 0.5;
+        float light = dot(vNormal, normalize(vec3(1.0)));
 
 
         //strokes
-        float stroke = cos((vScreenSpace.x - vScreenSpace.y) * 400.0);
+        float stroke = cos((vScreenSpace.x - vScreenSpace.y) * 700.0);
 
-        float smallNoise = cnoise(vec3(vScreenSpace * 200.0, 1.0));
+        float smallNoise = cnoise(vec3(vScreenSpace * 200.0, 1.0)) * 0.5 + 0.5;
+        float bigNoise = cnoise(vec3(vScreenSpace * 5.0, 1.0)) * 0.5 + 0.5;
         
+        stroke += (smallNoise * 2.0 - 1.0) + (bigNoise * 2.0 - 1.0);
+        
+        light += (bigNoise * 2.0 - 1.0) * light;
+        
+        stroke = smoothstep(light - 0.5, light + 0.5,stroke);
 
-        gl_FragColor = vec4(vec3(light), 1.0);
         gl_FragColor = vec4(vNormal, 1.0);
-        gl_FragColor = vec4(vec3(smallNoise * 0.5 + 0.5), 1.0);
-        gl_FragColor = vec4(vec3(stroke), 1.0);
         gl_FragColor = vec4(vScreenSpace, 0.0, 1.0);
+        gl_FragColor = vec4(vec3(light), 1.0);
+        gl_FragColor = vec4(vec3(stroke), 1.0);
+        // gl_FragColor = vec4(vec3(smallNoise * 0.5 + 0.5), 1.0);
+        // gl_FragColor = vec4(vec3(bigNoise * 0.5 + 0.5), 1.0);
     }
 `;
 
