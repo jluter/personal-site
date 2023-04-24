@@ -1,6 +1,8 @@
 @use './styles/mixins';
 
 .main-container {
+    position: relative;
+    
     @include mixins.desktop {
         display: flex;
         margin: 9rem;

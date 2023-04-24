@@ -15,9 +15,9 @@ const App: React.FC = () => {
     <main className='main-container'>
     <AboutMe />
     <DesktopDescription />
+    <ThreejsScene />
     </main>
     <Footer />
-    <ThreejsScene />
   </div>
   )
 }

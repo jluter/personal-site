@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import * as THREE from "three";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import grain from '../../assets/images/grain.jpg';
 
 const ThreejsScene: React.FC = () => {
   
@@ -19,14 +20,15 @@ const ThreejsScene: React.FC = () => {
       );
       camera.position.z = 5;
       
-      const renderer = new THREE.WebGLRenderer();
+      const renderer = new THREE.WebGLRenderer({ alpha: true });
       renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setClearColor(0x000000, 0);
     if (canvas) {
       canvas.appendChild(renderer.domElement);
 
     }
 
-    const controls = new OrbitControls(camera, renderer.domElement);
+    // const controls = new OrbitControls(camera, renderer.domElement);
 
     const geometry = new THREE.SphereGeometry( 1, 30, 30);
 
@@ -49,12 +51,12 @@ const ThreejsScene: React.FC = () => {
     const fragmentShader = `
     varying vec2 vUv;
     uniform float time;
+    uniform sampler2D grainTexture;
     
     varying vec2 vScreenSpace;
     varying vec3 vNormal;
     varying vec3 vPosition;
 
-    //
 // GLSL textureless classic 3D noise "cnoise",
 // with an RSL-style periodic variant "pnoise".
 // Author:  Stefan Gustavson (stefan.gustavson@liu.se)
@@ -170,8 +172,9 @@ const ThreejsScene: React.FC = () => {
 
 
 
-        float light = dot(vNormal, normalize(vec3(1.0)));
+        float light = dot(vNormal, normalize(vec3(0.0, 0.0, 1.0)));
 
+        float ttt = texture2D(grainTexture, 0.5 * (vScreenSpace + 1.0)).r;
 
         //strokes
         float stroke = cos((vScreenSpace.x - vScreenSpace.y) * 700.0);
@@ -187,6 +190,7 @@ const ThreejsScene: React.FC = () => {
 
         gl_FragColor = vec4(vNormal, 1.0);
         gl_FragColor = vec4(vScreenSpace, 0.0, 1.0);
+        gl_FragColor = vec4(vec3(ttt), 1.0);
         gl_FragColor = vec4(vec3(light), 1.0);
         gl_FragColor = vec4(vec3(stroke), 1.0);
         // gl_FragColor = vec4(vec3(smallNoise * 0.5 + 0.5), 1.0);
@@ -196,8 +200,10 @@ const ThreejsScene: React.FC = () => {
 
 
     const material = new THREE.ShaderMaterial ({
+      side: THREE.DoubleSide,
       uniforms: {
-        time: { value: 0.0 }
+        time: { value: 0.0 },
+        grainTexture: { value: new THREE.TextureLoader().load(grain) }
       },
       vertexShader,
       fragmentShader
@@ -209,14 +215,14 @@ const ThreejsScene: React.FC = () => {
 
     const animate = () => {
 
-      controls.update();
+      // controls.update();
 
       requestAnimationFrame( animate );
 
       material.uniforms.time.value += 0.01;
       
-      // sphere.rotation.x += 0.01;
-      // sphere.rotation.y += 0.01;
+      sphere.rotation.x += 0.01;
+      sphere.rotation.y += 0.01;
 
       renderer.render( scene, camera );
     }
@@ -240,7 +246,7 @@ const ThreejsScene: React.FC = () => {
   }, []);
 
   return (
-      <div ref={canvasRef}></div>
+      <div className="three-js" ref={canvasRef}></div>
   );
 };
 
