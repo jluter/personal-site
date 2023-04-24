@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
+import './ThreejsScene.scss';
 import * as THREE from "three";
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import grain from '../../assets/images/grain.jpg';
 
 const ThreejsScene: React.FC = () => {
