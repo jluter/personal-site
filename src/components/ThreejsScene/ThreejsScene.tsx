@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect} from "react";
 import './ThreejsScene.scss';
 import * as THREE from "three";
 // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
@@ -9,10 +9,34 @@ interface Props {
   mainElementHeight: number;
 }
 
+//Types for getting mouse position
+// interface MousePosition {
+//   x: number;
+//   y: number;
+// }
+
 const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) => {
   
+  //Code to get value of mouse position
+  // const [position, setPosition] = useState<MousePosition>({ x: 0, y: 0 });
+  // useEffect(() => {
+
+  //   const handleMouseMove = (event: MouseEvent) => {
+  //     event.preventDefault();
+  //     setPosition({ x: event.clientX, y: event.clientY });
+  //   };
+
+  //   window.addEventListener('mousemove', handleMouseMove);
+
+  //   return () => {
+  //     window.removeEventListener('mousemove', handleMouseMove);
+  //   }
+  // }, []);
+
   const canvasRef = useRef<HTMLDivElement>(null); //Tells React where to mount three.js scene/canvas
   
+
+
   useEffect(() => {
     const scene = new THREE.Scene();
     
@@ -226,8 +250,8 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
 
       material.uniforms.time.value += 0.01;
       
-      sphere.rotation.x += 0.0033;
-      sphere.rotation.y += 0.0033;
+      sphere.rotation.x += 0.025;
+      sphere.rotation.y += 0.0005;
 
       renderer.render( scene, camera );
     }

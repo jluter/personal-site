@@ -40,6 +40,9 @@ const App: React.FC = () => {
     }
   }, []);
 
+    
+
+
   return (<div>
     <main ref={mainElementRef} className='main-container'>
     {/* <BgAnimation mainElementWidth={mainElementWidth} mainElementHeight={mainElementHeight} width={windowWidth} height={windowHeight}/> */}
