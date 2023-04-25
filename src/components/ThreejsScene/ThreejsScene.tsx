@@ -4,7 +4,12 @@ import * as THREE from "three";
 // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import grain from '../../assets/images/grain.jpg';
 
-const ThreejsScene: React.FC = () => {
+interface Props {
+  mainElementWidth: number;
+  mainElementHeight: number;
+}
+
+const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) => {
   
   const canvasRef = useRef<HTMLDivElement>(null); //Tells React where to mount three.js scene/canvas
   
@@ -14,15 +19,14 @@ const ThreejsScene: React.FC = () => {
     const canvas = canvasRef.current;
     const camera = new THREE.PerspectiveCamera(
       50, 
-      window.innerWidth / 
-      window.innerHeight,
+      mainElementWidth / mainElementHeight,
       0.001,
       1000
       );
       camera.position.z = 5;
       
       const renderer = new THREE.WebGLRenderer({ alpha: true });
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(mainElementWidth, mainElementHeight);
       renderer.setClearColor(0x000000, 0);
     if (canvas) {
       canvas.appendChild(renderer.domElement);
@@ -222,8 +226,8 @@ const ThreejsScene: React.FC = () => {
 
       material.uniforms.time.value += 0.01;
       
-      sphere.rotation.x += 0.01;
-      sphere.rotation.y += 0.01;
+      sphere.rotation.x += 0.0033;
+      sphere.rotation.y += 0.0033;
 
       renderer.render( scene, camera );
     }
@@ -244,7 +248,7 @@ const ThreejsScene: React.FC = () => {
 
         canvas.removeChild( renderer.domElement );
     }};
-  }, []);
+  }, [mainElementWidth, mainElementHeight]);
 
   return (
       <div className="three-js" ref={canvasRef}></div>

@@ -16,7 +16,7 @@ const BgAnimation: React.FC<BgAnimationProps> = ({width, height, mainElementHeig
 
   //p5 Animation as a function --------------
   const sketch: Sketch = (p5) => {
-    let numPoints: number = 500;
+    let numPoints: number = 20000;
     let points: any = [];
     let amplitude: any = [];
 
