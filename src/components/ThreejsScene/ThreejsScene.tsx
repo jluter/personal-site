@@ -206,7 +206,7 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
         float ttt = texture2D(grainTexture, 0.5 * (vScreenSpace + 1.0)).r;
 
         //strokes
-        float stroke = cos((vScreenSpace.x - vScreenSpace.y) * 700.0);
+        float stroke = cos((vScreenSpace.x - vScreenSpace.y) * 400.0);
 
         float smallNoise = cnoise(vec3(vScreenSpace * 200.0, 1.0)) * 0.5 + 0.5;
         float bigNoise = cnoise(vec3(vScreenSpace * 5.0, 1.0)) * 0.5 + 0.5;
@@ -250,7 +250,7 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
 
       material.uniforms.time.value += 0.01;
       
-      sphere.rotation.x += 0.025;
+      sphere.rotation.x += 0.003;
       sphere.rotation.y += 0.0005;
 
       renderer.render( scene, camera );
