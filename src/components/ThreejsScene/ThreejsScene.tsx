@@ -204,7 +204,7 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
         float ttt = texture2D(grainTexture, vScreenSpace + 1.0).r;
 
         //strokes
-        float stroke = cos((vScreenSpace.x - vScreenSpace.y) * 400.0);
+        float stroke = cos((vScreenSpace.x - vScreenSpace.y) * 500.0);
 
         float smallNoise = cnoise(vec3(vScreenSpace * 400.0, 1.0)) * 0.5 + 0.5;
         float bigNoise = cnoise(vec3(vScreenSpace * 5.0, 1.0)) * 0.5 + 0.5;
