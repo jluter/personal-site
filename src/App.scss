@@ -11,21 +11,21 @@
 //     background-color: black;
 // }
 
-.app {
-    &::before {
-        content: "";
-        // background-image: url('../src/assets/images/clouds2.jpg');
-        // background-size: cover;
-        background-color: rgba(0, 0, 0, 0.1);
-        width: 100%;
-        height: 100%;
-        // filter: grayscale(100%) blur(5px) opacity(60%) drop-shadow(3px 3px white);
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 10;
-    }
-}
+// .app {
+//     &::before {
+//         content: "";
+//         // background-image: url('../src/assets/images/clouds2.jpg');
+//         // background-size: cover;
+//         background-color: rgba(0, 0, 0, 0.1);
+//         width: 100%;
+//         height: 100%;
+//         // filter: grayscale(100%) blur(5px) opacity(60%) drop-shadow(3px 3px white);
+//         position: absolute;
+//         top: 0;
+//         left: 0;
+//         z-index: 10;
+//     }
+// }
 
 .main-container {
     border: 1px solid black;

@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./App.scss";
 import "./styles/_global.scss";
+import ThreejsScene from "./Components/ThreejsScene/ThreejsScene";
 // import Header from './Components/Header/Header';
 // import LineAnimation from './Components/LineAnimation/LineAnimation';
-import AboutMe from "./Components/AboutMe/AboutMe";
 // import Footer from './Components/Footer/Footer';
 // import DesktopDescription from './Components/DesktopDescription/DesktopDescription';
 // import BgAnimation from './Components/BgAnimation/BgAnimation';
-import ThreejsScene from "./Components/ThreejsScene/ThreejsScene";
 
 const App: React.FC = () => {
   // const [windowWidth, setWindoWidth] = useState(window.innerWidth);
@@ -41,8 +40,6 @@ const App: React.FC = () => {
   return (
     <div className="app">
       <main ref={mainElementRef} className="main-container">
-        {/* <BgAnimation mainElementWidth={mainElementWidth} mainElementHeight={mainElementHeight} width={windowWidth} height={windowHeight}/> */}
-        {/* <AboutMe /> */}
         <ThreejsScene
           mainElementWidth={mainElementWidth}
           mainElementHeight={mainElementHeight}

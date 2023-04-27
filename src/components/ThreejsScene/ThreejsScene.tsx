@@ -60,6 +60,7 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
 
     const controls = new OrbitControls(camera, renderer.domElement);
     const geometry = new THREE.SphereGeometry( 1, 64, 64);
+    
     const vertexShader = `
     varying vec2 vUv;
 
