@@ -1,17 +1,15 @@
-import React, { useState, useEffect, useRef} from 'react';
-import './App.scss';
-import './styles/_global.scss';
+import React, { useState, useEffect, useRef } from "react";
+import "./App.scss";
+import "./styles/_global.scss";
 // import Header from './Components/Header/Header';
 // import LineAnimation from './Components/LineAnimation/LineAnimation';
-import AboutMe from './Components/AboutMe/AboutMe';
+import AboutMe from "./Components/AboutMe/AboutMe";
 // import Footer from './Components/Footer/Footer';
 // import DesktopDescription from './Components/DesktopDescription/DesktopDescription';
 // import BgAnimation from './Components/BgAnimation/BgAnimation';
-import ThreejsScene from './Components/ThreejsScene/ThreejsScene';
-
+import ThreejsScene from "./Components/ThreejsScene/ThreejsScene";
 
 const App: React.FC = () => {
-
   // const [windowWidth, setWindoWidth] = useState(window.innerWidth);
   // const [windowHeight, setWindoHeight] = useState(window.innerHeight);
 
@@ -20,9 +18,9 @@ const App: React.FC = () => {
       // setWindoWidth(window.innerWidth);
       // setWindoHeight(window.innerHeight);
       if (mainElementRef.current) {
-      setElementHeight(mainElementRef.current.clientHeight);
-      setElementWidth(mainElementRef.current.clientWidth);
-    }
+        setElementHeight(mainElementRef.current.clientHeight);
+        setElementWidth(mainElementRef.current.clientWidth);
+      }
     }
 
     window.addEventListener("resize", handleResize);
@@ -40,17 +38,18 @@ const App: React.FC = () => {
     }
   }, []);
 
-    
-
-
-  return (<div>
-    <main ref={mainElementRef} className='main-container'>
-    {/* <BgAnimation mainElementWidth={mainElementWidth} mainElementHeight={mainElementHeight} width={windowWidth} height={windowHeight}/> */}
-    <AboutMe />
-    <ThreejsScene mainElementWidth={mainElementWidth} mainElementHeight={mainElementHeight}/>
-    </main>
-  </div>
-  )
-}
+  return (
+    <div className="app">
+      <main ref={mainElementRef} className="main-container">
+        {/* <BgAnimation mainElementWidth={mainElementWidth} mainElementHeight={mainElementHeight} width={windowWidth} height={windowHeight}/> */}
+        {/* <AboutMe /> */}
+        <ThreejsScene
+          mainElementWidth={mainElementWidth}
+          mainElementHeight={mainElementHeight}
+        />
+      </main>
+    </div>
+  );
+};
 
 export default App;

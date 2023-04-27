@@ -1,8 +1,8 @@
 import React, { useRef, useEffect} from "react";
 import './ThreejsScene.scss';
 import * as THREE from "three";
-// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import grain from '../../assets/images/grain.jpg';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import grain from '../../assets/images/blur.jpg';
 
 interface Props {
   mainElementWidth: number;
@@ -42,12 +42,13 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
     
     const canvas = canvasRef.current;
     const camera = new THREE.PerspectiveCamera(
-      50, 
+     50, 
       mainElementWidth / mainElementHeight,
-      0.001,
+      0.01,
       1000
       );
       camera.position.z = 5;
+
       
       const renderer = new THREE.WebGLRenderer({ alpha: true });
       renderer.setSize(mainElementWidth, mainElementHeight);
@@ -57,10 +58,8 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
 
     }
 
-    // const controls = new OrbitControls(camera, renderer.domElement);
-
-    const geometry = new THREE.SphereGeometry( 1, 30, 30);
-
+    const controls = new OrbitControls(camera, renderer.domElement);
+    const geometry = new THREE.SphereGeometry( 1, 64, 64);
     const vertexShader = `
     varying vec2 vUv;
 
@@ -200,27 +199,25 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
         vec3 color = vec3(noiseVal * 0.5 + 0.5);
 
 
+        float light = dot(vNormal * (sin(vScreenSpace.x) *0.5 + 0.5) + 0.75, normalize(vec3(0.0, 0.0, 0.5)));
 
-        float light = dot(vNormal, normalize(vec3(0.0, 0.0, 1.0)));
-
-        float ttt = texture2D(grainTexture, 0.5 * (vScreenSpace + 1.0)).r;
+        float ttt = texture2D(grainTexture, vScreenSpace + 1.0).r;
 
         //strokes
         float stroke = cos((vScreenSpace.x - vScreenSpace.y) * 400.0);
 
-        float smallNoise = cnoise(vec3(vScreenSpace * 200.0, 1.0)) * 0.5 + 0.5;
+        float smallNoise = cnoise(vec3(vScreenSpace * 400.0, 1.0)) * 0.5 + 0.5;
         float bigNoise = cnoise(vec3(vScreenSpace * 5.0, 1.0)) * 0.5 + 0.5;
         
-        stroke += (smallNoise * 2.0 - 1.0) + (bigNoise * 2.0 - 1.0);
+        light += sin(bigNoise * 2.0 - 1.0) + ttt;
         
-        light += (bigNoise * 2.0 - 1.0) * light;
-        
+        stroke += (smallNoise - sin(stroke)) + (bigNoise - cos(stroke) * 0.5); 
         stroke = smoothstep(light - 0.5, light + 0.5,stroke);
 
         gl_FragColor = vec4(vNormal, 1.0);
         gl_FragColor = vec4(vScreenSpace, 0.0, 1.0);
-        gl_FragColor = vec4(vec3(ttt), 1.0);
         gl_FragColor = vec4(vec3(light), 1.0);
+        gl_FragColor = vec4(vec3(ttt), 1.0);
         gl_FragColor = vec4(vec3(stroke), 1.0);
         // gl_FragColor = vec4(vec3(smallNoise * 0.5 + 0.5), 1.0);
         // gl_FragColor = vec4(vec3(bigNoise * 0.5 + 0.5), 1.0);
@@ -232,27 +229,45 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
       side: THREE.DoubleSide,
       uniforms: {
         time: { value: 0.0 },
-        grainTexture: { value: new THREE.TextureLoader().load(grain) }
+        map: { value: new THREE.TextureLoader().load(grain) }
       },
       vertexShader,
       fragmentShader
     });
 
-
+  
     const sphere = new THREE.Mesh (geometry, material);
+    const test = new THREE.Mesh(new THREE.SphereGeometry( 0.33, 64, 64), material)
+
     scene.add(sphere);
+    scene.add(test);
 
+    
+    
     const animate = () => {
-
-      // controls.update();
-
-      requestAnimationFrame( animate );
-
-      material.uniforms.time.value += 0.01;
       
-      sphere.rotation.x += 0.003;
-      sphere.rotation.y += 0.0005;
+      controls.update();
+      
+      requestAnimationFrame( animate );
+      let radius = 1.5;
+      let date = Date.now() * 0.00033;
+      test.position.set(
+        Math.cos(date) * radius, Math.cos(date) , Math.sin(date) * radius
+      );
 
+
+      material.uniforms.time.value += 0.1;
+
+      sphere.rotation.x += 0.00066
+      sphere.rotation.y += 0.0033;
+      // sphere.rotation.z += 0.5;
+      // sphere.position.x = -1;
+      // sphere.position.y = -0.5;
+
+      // camera.position.z += Math.cos(sphere.rotation.y) * 0.005;
+      // camera.position.z = 1;
+
+      
       renderer.render( scene, camera );
     }
 
