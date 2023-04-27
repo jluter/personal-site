@@ -237,10 +237,10 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
 
   
     const sphere = new THREE.Mesh (geometry, material);
-    const test = new THREE.Mesh(new THREE.SphereGeometry( 0.33, 64, 64), material)
+    const sphereClone = new THREE.Mesh(new THREE.SphereGeometry( 0.33, 64, 64), material)
 
     scene.add(sphere);
-    scene.add(test);
+    scene.add(sphereClone);
 
     
     
@@ -250,11 +250,11 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
       
       requestAnimationFrame( animate );
       let radius = 1.5;
-      let date = Date.now() * 0.00033;
-      test.position.set(
+      let date = Date.now() * 0.00077;
+      sphereClone.position.set(
         Math.cos(date) * radius, Math.cos(date) , Math.sin(date) * radius
       );
-
+      sphereClone.rotation.y += 0.0005;
 
       material.uniforms.time.value += 0.1;
 
