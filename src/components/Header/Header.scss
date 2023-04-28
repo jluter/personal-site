@@ -13,6 +13,10 @@
         top: var(--spacing);
         left: var(--spacing);
         width: 100%;
+
+        @include mixins.small-mobile {
+            line-height: calc(var(--spacing)*2);
+        }
     }
 
     &__list {
@@ -25,6 +29,11 @@
         position: absolute;
         top: var(--spacing);
         right: var(--spacing);
+
+        @include mixins.small-mobile {
+            flex-direction: column;
+            line-height: calc(var(--spacing)*2);
+        }
 
     }
     

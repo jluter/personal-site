@@ -18,18 +18,6 @@
   }
 }
 
-@mixin tall-screen {
-  @media screen and (min-height: 1151px) {
-    @content
-  }
-}
-
-@mixin short-screen {
-  @media screen and (max-height: 699px) {
-    @content
-  }
-}
-
 // Fade-in animation that takes a number value in seconds
 
 
