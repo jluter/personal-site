@@ -219,7 +219,7 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
         gl_FragColor = vec4(vScreenSpace, 0.0, 1.0);
         gl_FragColor = vec4(vec3(light), 1.0);
         gl_FragColor = vec4(vec3(ttt), 1.0);
-        gl_FragColor = vec4(vec3(stroke), 1.0);
+        gl_FragColor = vec4(vec3(stroke), 0.85);
         // gl_FragColor = vec4(vec3(smallNoise * 0.5 + 0.5), 1.0);
         // gl_FragColor = vec4(vec3(bigNoise * 0.5 + 0.5), 1.0);
     }
