@@ -5,11 +5,15 @@
     box-sizing: border-box;
 }
 
+:root {
+    --spacing: max(1rem, 2.5vmin);
+}
+
 body {
     font-family: $archivo, sans-serif;
     margin: 0 auto;
     background-color: $brunswick-green;
-    color: $timberwolf;
+    // color: $timberwolf;
     line-height: 1.2rem;
 }
 
@@ -20,6 +24,10 @@ a {
     &:hover {
         color: $fern-green;
     }
+}
+
+h1 {
+    margin: 0;
 }
 
 @keyframes test {

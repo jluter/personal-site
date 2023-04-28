@@ -1,6 +1,6 @@
 import React from 'react';
 import './Header.scss';
-import { SiGithub, SiLinkedin } from 'react-icons/si';
+// import { SiGithub, SiLinkedin } from 'react-icons/si';
 
 
 const Header: React.FC = (props) => {
@@ -10,36 +10,12 @@ const Header: React.FC = (props) => {
 
   return (
     <header className="header">
-      <div>
-        <h1 className="title">Hello, I'm Jakob</h1>
-        <div className='subtitle-container'>
-        <h3 className="subtitle">
-          A Full-Stack Developer making {(windowWidth > 440) ? <br /> : null} responsive websites.
-        </h3>
-        <nav className="navbar">
-          <ul className="navbar__list">
-            <li className="navbar__item">
-              <a
-                rel="noreferrer noopener"
-                target="_blank"
-                href="https://www.linkedin.com/in/jakob-luter/"
-              >
-                <SiLinkedin size={(windowWidth > 767) ? '2.5rem' : '2rem'} />
-              </a>
-            </li>
-            <li className="navbar__item">
-              <a
-                rel="noreferrer noopener"
-                target="_blank"
-                href="https://github.com/jluter"
-              >
-                <SiGithub size={(windowWidth > 767) ? '2.5rem' : '2rem'} />
-              </a>
-            </li>
-          </ul>
-        </nav>
-        </div>
-      </div>
+      <h1 className="header__title">Jakob Luter</h1>
+      <ul className='header__list'>
+        <li className='header__list-item'>Works</li>
+        <li className='header__list-item'>About</li>
+        <li className='header__list-item'>Contact</li>
+      </ul>
     </header>
   );
 };

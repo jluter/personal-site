@@ -2,66 +2,36 @@
 @use '../../styles/mixins';
 
 .header {
-    padding: 2rem;
-    padding-bottom: 0;
-
-    @include mixins.desktop {
-        padding-top: 3rem;
-    }
-}
-
-.title {
-    margin: 0;
-    text-align: right;
-    font-size: 2rem;
-    @include mixins.fade-in(2s);
-
-    @include mixins.desktop {
-        font-size: 4rem;
-    }
-
-}
-
-.subtitle {
-    text-align: left;
-    @include mixins.fade-in(3s);
-
-    @include mixins.small-mobile {
-        font-size: 1rem;
-    }
-
-    @include mixins.tablet {
-        font-size: 1.5rem;
-        line-height: 1.5rem;
-    }
-
-    @include mixins.desktop {
-        font-size: 2.5rem;
-        line-height: 3rem;
-    }
-}
-
-.subtitle-container {
+    font-family: $archivo;
+    font-weight: bold;
+    color: black;
+    z-index: 10;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-}
 
-.navbar {
-    display: flex;
-    justify-content: center;
-    margin: 0;
+    &__title {
+        position: absolute;
+        top: var(--spacing);
+        left: var(--spacing);
+        width: 100%;
+    }
 
     &__list {
         display: flex;
+        gap: var(--spacing);
         list-style-type: none;
         margin: 0;
-        gap: 2rem;
         padding: 0;
-    }
+        justify-content: space-between;
+        position: absolute;
+        top: var(--spacing);
+        right: var(--spacing);
 
-    &__item {
-        @include mixins.fade-in(2s)
+    }
+    
+    &__list-item {
+        &:hover {
+            border-bottom: 4px solid black;
+        }
+
     }
 }

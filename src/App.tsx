@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./App.scss";
 import "./styles/_global.scss";
 import ThreejsScene from "./Components/ThreejsScene/ThreejsScene";
-// import Header from './Components/Header/Header';
+import Header from './Components/Header/Header';
 // import LineAnimation from './Components/LineAnimation/LineAnimation';
 // import Footer from './Components/Footer/Footer';
 // import DesktopDescription from './Components/DesktopDescription/DesktopDescription';
@@ -40,6 +40,7 @@ const App: React.FC = () => {
   return (
     <div className="app">
       <main ref={mainElementRef} className="main-container">
+        <Header />
         <ThreejsScene
           mainElementWidth={mainElementWidth}
           mainElementHeight={mainElementHeight}
