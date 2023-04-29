@@ -11,18 +11,7 @@ const Footer: React.FC = () => {
 
     return (
         <footer className='footer'>
-            <nav className='footer__nav'>
-                <div className='footer__nav-item'>
-                    <FaPhoneAlt size={(windowWidth > 767) ? '1.5rem' : '1rem'} /><p className='footer__nav-item--info'>: (936) 346-9878</p>
-                </div>
-                <div className='footer__line-animation'>
-                <LineAnimation />
-
-                </div>
-                <div className='footer__nav-item'>
-                    <HiMail size={(windowWidth > 767) ? '2rem' : '1.5rem'}/><p className='footer__nav-item--info'>: jakobluter20@gmail.com</p>
-                </div>
-            </nav>
+            Thank you for visiting. I'm a full stack developer interested in learning, collaborating, and exploring new opportunities. Feel free to contact me for any personal or professional inquiries. 
         </footer>
     );
 };

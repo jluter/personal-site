@@ -1,7 +1,7 @@
 import React, { useRef, useEffect} from "react";
 import './ThreejsScene.scss';
 import * as THREE from "three";
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import grain from '../../assets/images/blur.jpg';
 
 interface Props {
@@ -47,7 +47,8 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
       0.01,
       1000
       );
-      camera.position.z = 5;
+      camera.position.set(1, 1.5, 3);
+      // camera.position.x = ;
 
       
       const renderer = new THREE.WebGLRenderer({ alpha: true });
@@ -58,7 +59,7 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
 
     }
 
-    const controls = new OrbitControls(camera, renderer.domElement);
+    // const controls = new OrbitControls(camera, renderer.domElement);
     const geometry = new THREE.SphereGeometry( 1, 64, 64);
     
     const vertexShader = `
@@ -247,7 +248,7 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
     
     const animate = () => {
       
-      controls.update();
+      // controls.update();
       
       requestAnimationFrame( animate );
       let radius = 1.5;

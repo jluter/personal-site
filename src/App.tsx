@@ -3,8 +3,8 @@ import "./App.scss";
 import "./styles/_global.scss";
 import ThreejsScene from "./Components/ThreejsScene/ThreejsScene";
 import Header from './Components/Header/Header';
+import Footer from './Components/Footer/Footer';
 // import LineAnimation from './Components/LineAnimation/LineAnimation';
-// import Footer from './Components/Footer/Footer';
 // import DesktopDescription from './Components/DesktopDescription/DesktopDescription';
 // import BgAnimation from './Components/BgAnimation/BgAnimation';
 
@@ -45,6 +45,7 @@ const App: React.FC = () => {
           mainElementWidth={mainElementWidth}
           mainElementHeight={mainElementHeight}
         />
+        {/* <Footer /> */}
       </main>
     </div>
   );
