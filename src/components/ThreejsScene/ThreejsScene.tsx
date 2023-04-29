@@ -1,4 +1,4 @@
-import React, { useRef, useEffect} from "react";
+import React, { useRef, useEffect, useState} from "react";
 import './ThreejsScene.scss';
 import * as THREE from "three";
 // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
@@ -35,11 +35,11 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
 
   const canvasRef = useRef<HTMLDivElement>(null); //Tells React where to mount three.js scene/canvas
   
-
-
   useEffect(() => {
     const scene = new THREE.Scene();
-    
+
+
+
     const canvas = canvasRef.current;
     const camera = new THREE.PerspectiveCamera(
      50, 
@@ -47,8 +47,7 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
       0.01,
       1000
       );
-      camera.position.set(1, 1.5, 3);
-      // camera.position.x = ;
+      camera.position.set(0, 0, 5);
 
       
       const renderer = new THREE.WebGLRenderer({ alpha: true });
@@ -81,7 +80,7 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
     const fragmentShader = `
     varying vec2 vUv;
     uniform float time;
-    uniform sampler2D grainTexture;
+    // uniform sampler2D grainTexture;
     
     varying vec2 vScreenSpace;
     varying vec3 vNormal;
@@ -203,7 +202,7 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
 
         float light = dot(vNormal * (sin(vScreenSpace.x) *0.5 + 0.5) + 0.75, normalize(vec3(0.0, 0.0, 0.5)));
 
-        float ttt = texture2D(grainTexture, vScreenSpace + 1.0).r;
+        // float ttt = texture2D(grainTexture, vScreenSpace + 1.0).r;
 
         //strokes
         float stroke = cos((vScreenSpace.x - vScreenSpace.y) * 500.0);
@@ -211,7 +210,7 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
         float smallNoise = cnoise(vec3(vScreenSpace * 400.0, 1.0)) * 0.5 + 0.5;
         float bigNoise = cnoise(vec3(vScreenSpace * 5.0, 1.0)) * 0.5 + 0.5;
         
-        light += sin(bigNoise * 2.0 - 1.0) + ttt;
+        light += sin(bigNoise * 2.0 - 1.0);
         
         stroke += (smallNoise - sin(stroke)) + (bigNoise - cos(stroke) * 0.5); 
         stroke = smoothstep(light - 0.5, light + 0.5,stroke);
@@ -219,7 +218,7 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
         gl_FragColor = vec4(vNormal, 1.0);
         gl_FragColor = vec4(vScreenSpace, 0.0, 1.0);
         gl_FragColor = vec4(vec3(light), 1.0);
-        gl_FragColor = vec4(vec3(ttt), 1.0);
+        // gl_FragColor = vec4(vec3(ttt), 1.0);
         gl_FragColor = vec4(vec3(stroke), 0.85);
         // gl_FragColor = vec4(vec3(smallNoise * 0.5 + 0.5), 1.0);
         // gl_FragColor = vec4(vec3(bigNoise * 0.5 + 0.5), 1.0);
@@ -231,7 +230,7 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
       side: THREE.DoubleSide,
       uniforms: {
         time: { value: 0.0 },
-        map: { value: new THREE.TextureLoader().load(grain) }
+        // map: { value: new THREE.TextureLoader().load(grain) }
       },
       vertexShader,
       fragmentShader
@@ -249,8 +248,14 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
     const animate = () => {
       
       // controls.update();
-      
       requestAnimationFrame( animate );
+
+      //Zoom effect by incrementation based on window width
+      if (window.innerWidth < 441 ) {
+        (camera.position.x > 1) ? '' : (camera.position.x += 0.01, camera.position.y += 0.01, camera.position.z -= 0.01); 
+      } 
+
+
       let radius = 1.5;
       let date = Date.now() * 0.00077;
       sphereClone.position.set(
@@ -269,7 +274,6 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
       // camera.position.z += Math.cos(sphere.rotation.y) * 0.005;
       // camera.position.z = 1;
 
-      
       renderer.render( scene, camera );
     }
 
@@ -281,8 +285,9 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
 
     window.addEventListener("resize", onWindowResize, false);
 
-    animate();
 
+  
+    animate();
 
     return () => {
       if (canvas) {
