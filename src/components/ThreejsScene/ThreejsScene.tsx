@@ -1,12 +1,18 @@
 import React, { useRef, useEffect, useState} from "react";
 import './ThreejsScene.scss';
 import * as THREE from "three";
+import { lerp } from "three/src/math/MathUtils";
 // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import grain from '../../assets/images/blur.jpg';
+// import grain from '../../assets/images/blur.jpg';
 
 interface Props {
   mainElementWidth: number;
   mainElementHeight: number;
+  cameraState: {
+    cameraX: number,
+    cameraY: number,
+    cameraZ: number
+  };
 }
 
 //Types for getting mouse position
@@ -15,8 +21,17 @@ interface Props {
 //   y: number;
 // }
 
-const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) => {
+const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight, cameraState }) => {
+
+  const [test, setTest] = useState<number>(0);
+  const [test2, setTest2] = useState<number>(0);
+  const [test3, setTest3] = useState<number>(5);
   
+  const cameraX = cameraState.cameraX;
+  const cameraY = cameraState.cameraY;
+  const cameraZ = cameraState.cameraZ;
+  // const cameraPosition = new THREE.Vector3(cameraX, cameraY, cameraZ)
+
   //Code to get value of mouse position
   // const [position, setPosition] = useState<MousePosition>({ x: 0, y: 0 });
   // useEffect(() => {
@@ -47,7 +62,7 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
       0.01,
       1000
       );
-      camera.position.set(0, 0, 5);
+      camera.position.set(test, test2, test3);
 
       
       const renderer = new THREE.WebGLRenderer({ alpha: true });
@@ -244,18 +259,20 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
     scene.add(sphereClone);
 
     
+
     
     const animate = () => {
       
       // controls.update();
       requestAnimationFrame( animate );
 
-      //Zoom effect by incrementation based on window width
-      if (window.innerWidth < 441 ) {
-        (camera.position.x > 1) ? '' : (camera.position.x += 0.01, camera.position.y += 0.01, camera.position.z -= 0.01); 
-      } 
+      camera.position.lerp(new THREE.Vector3(cameraX, cameraY, cameraZ), 0.005);
 
+      setTest(cameraX);
+      setTest2(cameraY);
+      setTest3(cameraZ);
 
+      //create rotation for smaller sphere 
       let radius = 1.5;
       let date = Date.now() * 0.00077;
       sphereClone.position.set(
@@ -277,7 +294,7 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
       renderer.render( scene, camera );
     }
 
-    let onWindowResize = function () {
+    let onWindowResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize( window.innerWidth, window.innerHeight );
@@ -294,7 +311,7 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight}) =>
 
         canvas.removeChild( renderer.domElement );
     }};
-  }, [mainElementWidth, mainElementHeight]);
+  }, [mainElementWidth, mainElementHeight, cameraState]);
 
   return (
       <div className="three-js" ref={canvasRef}></div>
