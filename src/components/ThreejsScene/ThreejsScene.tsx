@@ -23,9 +23,9 @@ interface Props {
 
 const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight, cameraState }) => {
 
-  const [test, setTest] = useState<number>(0);
-  const [test2, setTest2] = useState<number>(0);
-  const [test3, setTest3] = useState<number>(5);
+  const [lerpFromX, setLerpFromX] = useState<number>(0);
+  const [lerpFromY, setLerpFromY] = useState<number>(0);
+  const [lerpFromZ, setLerpFromZ] = useState<number>(5);
   
   const cameraX = cameraState.cameraX;
   const cameraY = cameraState.cameraY;
@@ -62,7 +62,7 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight, cam
       0.01,
       1000
       );
-      camera.position.set(test, test2, test3);
+      camera.position.set(lerpFromX, lerpFromY, lerpFromZ);
 
       
       const renderer = new THREE.WebGLRenderer({ alpha: true });
@@ -266,11 +266,11 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight, cam
       // controls.update();
       requestAnimationFrame( animate );
 
-      camera.position.lerp(new THREE.Vector3(cameraX, cameraY, cameraZ), 0.005);
+      camera.position.lerp(new THREE.Vector3(cameraX, cameraY, cameraZ), 0.033);
 
-      setTest(cameraX);
-      setTest2(cameraY);
-      setTest3(cameraZ);
+      setLerpFromX(cameraX);
+      setLerpFromY(cameraY);
+      setLerpFromZ(cameraZ);
 
       //create rotation for smaller sphere 
       let radius = 1.5;

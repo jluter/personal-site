@@ -24,9 +24,9 @@ const Header: React.FC<Props> = ({cameraState, handleHeaderListClick}) => {
     <header className="header">
       <h1 className="header__title" onClick={() => handleHeaderListClick(0, 0, 5)}>Jakob{pagebreak}Luter</h1>
       <ul className='header__list'>
-        <li className='header__list-item' onClick={() => handleHeaderListClick(1, 1, 3)}>Works</li>
-        <li className='header__list-item' onClick={() => handleHeaderListClick(-1, 1, 3)}>About</li>
-        <li className='header__list-item' onClick={() => handleHeaderListClick(1, -1, 3)}>Contact</li>
+        <li className='header__list-item' onClick={() => handleHeaderListClick(1.5, 1, 2.5)}>Works</li>
+        <li className='header__list-item' onClick={() => handleHeaderListClick(-1.5, 1, 2.5)}>About</li>
+        <li className='header__list-item' onClick={() => handleHeaderListClick(1.5, -1, 2.5)}>Contact</li>
       </ul>
     </header>
   );
