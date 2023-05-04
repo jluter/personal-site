@@ -2,9 +2,6 @@
 @use '../../styles/mixins';
 
 .header {
-    font-family: $archivo;
-    font-weight: bold;
-    color: black;
     z-index: 10;
     display: flex;
 
@@ -13,6 +10,7 @@
         top: var(--spacing);
         left: var(--spacing);
         width: 100%;
+        font-weight: 300;
 
         &:hover {
             cursor: pointer;
