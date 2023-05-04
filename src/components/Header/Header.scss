@@ -40,9 +40,18 @@
     }
     
     &__list-item {
-        &:hover {
-            border-bottom: 4px solid black;
-            cursor: pointer;
+        cursor: pointer;
+
+        &::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 4px;
+            background: black;
+            transition: width 0.2s;
+        }
+        &:hover::after {
+            width: 100%;
         }
 
     }
