@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./App.scss";
 import "./styles/_global.scss";
 import ThreejsScene from "./Components/ThreejsScene/ThreejsScene";
-import Header from './Components/Header/Header';
+import Header from "./Components/Header/Header";
 import Works from "./Components/Works/Works";
 // import Footer from './Components/Footer/Footer';
 // import LineAnimation from './Components/LineAnimation/LineAnimation';
@@ -13,6 +13,7 @@ interface CameraState {
   cameraX: number;
   cameraY: number;
   cameraZ: number;
+  name: string;
 }
 
 const App: React.FC = () => {
@@ -44,30 +45,35 @@ const App: React.FC = () => {
     }
   }, []);
 
-
   const [cameraState, setCameraState] = useState<CameraState>({
     cameraX: 0,
     cameraY: 0,
-    cameraZ: 5
+    cameraZ: 5,
+    name: "",
   });
 
-  const handleHeaderListClick = (x:number, y:number, z:number ) => {
-    
+  const handleHeaderListClick = (
+    x: number,
+    y: number,
+    z: number,
+    name: string
+  ) => {
     setCameraState({
       cameraX: x,
       cameraY: y,
-      cameraZ: z
-    })
-  }
-
-
+      cameraZ: z,
+      name: name,
+    });
+  };
 
   return (
     <div className="app">
       <main ref={mainElementRef} className="main-container">
-        <Header           cameraState={cameraState}
-          handleHeaderListClick = {handleHeaderListClick}/>
-        <Works/>
+        <Header
+          cameraState={cameraState}
+          handleHeaderListClick={handleHeaderListClick}
+        />
+        {(cameraState.name === 'works') ? <Works /> : ''}
         <ThreejsScene
           mainElementWidth={mainElementWidth}
           mainElementHeight={mainElementHeight}

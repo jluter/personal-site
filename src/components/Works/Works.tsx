@@ -7,6 +7,18 @@ import './Works.scss';
 
 const Works: React.FC = () => {
 
+    //List of works to be added. 
+    // pollutionpoll
+    // ranch-website
+    // shercousa
+    // factoryonesherco
+    // factoryonemotorsports
+    // vault.shercousa
+    // sanantoniochessclub
+    // completechess
+    // completechessfoundation
+
+
 
     return(
         <div className='works-container'>

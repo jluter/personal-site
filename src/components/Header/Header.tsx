@@ -7,9 +7,10 @@ interface Props {
   cameraState: {
     cameraX: number,
     cameraY: number,
-    cameraZ: number
+    cameraZ: number,
+    name: string
   };
-  handleHeaderListClick: (x: number, y: number, z: number) => void;
+  handleHeaderListClick: (x: number, y: number, z: number, name: string) => void;
 }
 
 const Header: React.FC<Props> = ({cameraState, handleHeaderListClick}) => {
@@ -21,11 +22,11 @@ const Header: React.FC<Props> = ({cameraState, handleHeaderListClick}) => {
 
   return (
     <header className="header">
-      <h1 className="header__title" onClick={() => handleHeaderListClick(0, 0, 5)}>Jakob{pagebreak}Luter</h1>
+      <h1 className="header__title" onClick={() => handleHeaderListClick(0, 0, 5, '')}>Jakob{pagebreak}Luter</h1>
       <ul className='header__list'>
-        <li className='header__list-item' onClick={() => handleHeaderListClick(x, 1, 2.5)}>Works</li>
-        <li className='header__list-item' onClick={() => handleHeaderListClick(-x, 1, 2.5)}>About</li>
-        <li className='header__list-item' onClick={() => handleHeaderListClick(x, -1, 2.5)}>Contact</li>
+        <li className='header__list-item' onClick={() => handleHeaderListClick(x, 1, 2.5, 'works')}>Works</li>
+        <li className='header__list-item' onClick={() => handleHeaderListClick(-x, 1, 2.5, 'about')}>About</li>
+        <li className='header__list-item' onClick={() => handleHeaderListClick(x, -1, 2.5, 'contact')}>Contact</li>
       </ul>
     </header>
   );
