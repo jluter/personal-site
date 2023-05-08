@@ -1,15 +1,17 @@
 .works-container {
     position: absolute;
-    top: calc(var(--spacing) + 25vh);
+    top: calc(var(--spacing) + 15vh);
     left: calc(var(--spacing));
 
     animation-duration: 3s;
     animation-name: fadein;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 1;
     animation-direction: alternate;
 }
 
 .works-list{
+    list-style-type: none;
+    margin: 0;
     display: flex;
     gap: calc(var(--spacing)*0.5);
     flex-direction: column;
