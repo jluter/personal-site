@@ -38,12 +38,22 @@
 
     &__item {
         font-weight: bolder;
-        
-        &:hover {
-            cursor: pointer;
-            border-bottom: 1px solid black;
+        display: flex;
+        &--text {
+            margin: 0;
+            padding: 0;
+            border-bottom: 1px solid transparent;
+            &:hover {
+                cursor: pointer;
+                border-bottom: 1px solid black;
+            }
         }
+        
     }
+}
+
+.test2 {
+    width: 75vw;
 }
 
 @keyframes fadein {

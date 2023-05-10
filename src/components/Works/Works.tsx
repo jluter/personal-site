@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
-import './Works.scss';
-import ranchWebsiteImage from '../../assets/images/ranch-website.jpg';
+import React, { useState } from "react";
+import "./Works.scss";
+import ranchWebsiteImage from "../../assets/images/ranch-website.jpg";
 // import { SiGithub, SiLinkedin } from 'react-icons/si';
 
-
-
+interface WorksListState {
+  title: string;
+  img: string;
+  description: string;
+}
 
 const Works: React.FC = () => {
-    
-    //List of works to be added.
+  //List of works to be added.
   // ranch-website
   // pollutionpoll
   // 12right.com
@@ -19,8 +21,12 @@ const Works: React.FC = () => {
   // sanantoniochessclub
   // completechess
   // completechessfoundation
-  
-  const [worksListState, setWorksListState] = useState("");
+
+  const [worksListState, setWorksListState] = useState<WorksListState>({
+    title: "",
+    img: "",
+    description: "",
+  });
   const worksArray = [
     {
       title: "Ranch Website",
@@ -28,35 +34,47 @@ const Works: React.FC = () => {
       description:
         "A mockup site for a local farm/ranch. Features custom styling and WordPress theme building.",
     },
-    {title: 'Pollution Poll'},
-    {title: '12Right'},
-    {title: 'Sherco USA'},
-    {title: 'FactoryONE Sherco'},
-    {title: 'FactoryONE Motorsports'},
-    {title: 'Sherco Vault'},
-    {title: 'San Antonio Chess Club'},
-    {title: 'Complete Chess'},
-    {title: 'Complete Chess Foundation'},
+    { title: "Pollution Poll", img: ranchWebsiteImage, description: "" },
+    { title: "12Right", img: ranchWebsiteImage, description: "" },
+    { title: "Sherco USA", img: ranchWebsiteImage, description: "" },
+    { title: "FactoryONE Sherco", img: ranchWebsiteImage, description: "" },
+    { title: "FactoryONE Motorsports", img: ranchWebsiteImage, description: "" },
+    { title: "Sherco Vault", img: ranchWebsiteImage, description: "" },
+    { title: "San Antonio Chess Club", img: ranchWebsiteImage, description: "" },
+    { title: "Complete Chess", img: ranchWebsiteImage, description: "" },
+    { title: "Complete Chess Foundation", img: ranchWebsiteImage, description: "" },
   ];
 
-  const handleWorksTitleClick = (title: string) => {
-    setWorksListState(title);
-  }
+  const handleWorksTitleClick = (aSingleWork: WorksListState) => {
+    setWorksListState({
+      title: aSingleWork.title,
+      img: aSingleWork.img,
+      description: aSingleWork.description,
+    });
+  };
 
   return (
     <div className="works-container">
       <ul className="works-list">
         {worksArray.map((work) => (
-            <li onClick={() => {handleWorksTitleClick(work.title)}} className='works-list__item'>{work.title}</li>
+          <li
+            onClick={() => {
+              handleWorksTitleClick(work);
+            }}
+            className="works-list__item"
+          >
+            <p className="works-list__item--text">{work.title}</p>
+          </li>
         ))}
       </ul>
-      {worksListState && 
-      <article>
-        <div>
-            <p>{worksListState}</p>
-        </div>
-      </article>
-      }
+      {worksListState && (
+        <article>
+          <div>
+            <p>{worksListState.title}</p>
+            <img className="test2" src={worksListState.img}/>
+          </div>
+        </article>
+      )}
     </div>
   );
 };
