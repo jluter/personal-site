@@ -17,7 +17,7 @@
     gap: calc(var(--spacing)*0.5);
     flex-direction: column;
     width: 100%;
-    padding: var(--spacing);
+    padding: 2rem var(--spacing);
     height: calc(var(--spacing)*10);
 
     overflow-y: scroll;
@@ -74,9 +74,26 @@
         border: 1px solid red;
     }
 
+    &__link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
     &__img {
         width: calc(100% - var(--spacing));
-        border-radius: 5px;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+    }
+    
+    &__description {
+        width: calc(100% - var(--spacing));
+        border: 1px solid red;
+        border-top: none;
+        text-align: center;
+        background-color: grey;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
     }
 }
 
