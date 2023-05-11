@@ -6,11 +6,11 @@
     font-display: swap;
 }
 
-$archivo: 'Archivo';
+$SourceSansPro: 'Archivo';
 
 @font-face {
     font-family: 'SourceSansPro';
-    src: url(../assets//fonts/SourceSansPro-Light.ttf) format('ttf');
+    src: url(../assets/fonts/SourceSansPro-Light.ttf) format('ttf');
 }
 
-$SourceSansPro: 'SourceSansPro';
+// $SourceSansPro: 'SourceSansPro';

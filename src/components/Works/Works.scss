@@ -1,3 +1,5 @@
+@use '../../styles/typography' as *;
+
 .works-container {
     position: absolute;
     top: calc(var(--spacing) + 15vh);
@@ -66,12 +68,13 @@
     flex-direction: column;
     align-items: center;
 
-    &__text {
+    &__title {
         margin: 0 0 var(--spacing) 0;
         padding: 0.25rem 0.5rem;
-        background-color: yellow;
+        background-color: #e5e5e5;
         border-radius: 5px;
-        border: 1px solid red;
+        // border: 1px solid red;
+        align-self: flex-end;
     }
 
     &__link {
@@ -87,14 +90,21 @@
     }
     
     &__description {
-        width: calc(100% - var(--spacing));
-        border: 1px solid red;
-        border-top: none;
-        text-align: center;
-        background-color: grey;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
+        color: black;
+        padding: var(--spacing);
+        font-weight: lighter;
+        font-family: $SourceSansPro;
     }
+}
+
+.test {
+    width: calc(100% - var(--spacing));
+    border-top: none;
+    // text-align: center;
+    background-color: #e5e5e5;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
 }
 
 @keyframes fadein {

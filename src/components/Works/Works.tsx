@@ -85,9 +85,12 @@ const Works: React.FC = () => {
       {worksListState.title && (
         <div className="works-article-container">
         <article className="works-article">
-            <h4 className="works-article__text">{worksListState.title}</h4>
+            <h4 className="works-article__title">{worksListState.title}</h4>
             <a className="works-article__link" target="_blank" rel="noopener noreferrer" href={worksListState.link}><img className="works-article__img" src={worksListState.img}/></a>
+            <div className="test">
+
             <div className="works-article__description">{worksListState.description}</div>
+            </div>
         </article>
         </div>
       )}
