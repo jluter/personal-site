@@ -54,6 +54,7 @@ const Works: React.FC = () => {
   };
 
   return (
+    <>
     <div className="works-container">
       <ul className="works-list">
         {worksArray.map((work) => (
@@ -67,15 +68,16 @@ const Works: React.FC = () => {
           </li>
         ))}
       </ul>
-      {worksListState && (
-        <article>
-          <div>
-            <p>{worksListState.title}</p>
-            <img className="test2" src={worksListState.img}/>
-          </div>
-        </article>
-      )}
     </div>
+      {worksListState && (
+        <div className="works-article-container">
+        <article className="works-article">
+            <h4 className="works-article__text">{worksListState.title}</h4>
+            <img className="works-article__img" src={worksListState.img}/>
+        </article>
+        </div>
+      )}
+    </>
   );
 };
 
