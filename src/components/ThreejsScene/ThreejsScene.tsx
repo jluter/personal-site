@@ -65,9 +65,10 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight, cam
       camera.position.set(lerpFromX, lerpFromY, lerpFromZ);
 
       
-      const renderer = new THREE.WebGLRenderer({ alpha: true });
+      const renderer = new THREE.WebGLRenderer({ antialias: false });
       renderer.setSize(mainElementWidth, mainElementHeight);
       renderer.setClearColor(0x000000, 0);
+      renderer.setPixelRatio( window.devicePixelRatio);
     if (canvas) {
       canvas.appendChild(renderer.domElement);
 

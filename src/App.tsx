@@ -4,6 +4,7 @@ import "./styles/_global.scss";
 import ThreejsScene from "./Components/ThreejsScene/ThreejsScene";
 import Header from "./Components/Header/Header";
 import Works from "./Components/Works/Works";
+import About from "./Components/About/About";
 // import Footer from './Components/Footer/Footer';
 // import LineAnimation from './Components/LineAnimation/LineAnimation';
 // import DesktopDescription from './Components/DesktopDescription/DesktopDescription';
@@ -74,6 +75,7 @@ const App: React.FC = () => {
           handleHeaderListClick={handleHeaderListClick}
         />
         {(cameraState.name === 'works') ? <Works /> : ''}
+        {(cameraState.name === 'about') ? <About handleHeaderListClick={handleHeaderListClick}/> : ''}
         <ThreejsScene
           mainElementWidth={mainElementWidth}
           mainElementHeight={mainElementHeight}

@@ -1,0 +1,51 @@
+.about {
+    position: absolute;
+    top: 15%;
+    left: var(--spacing);
+    font-size: 0.8rem;
+    font-weight: bold;
+    max-width: 50%;
+    animation-duration: 3s;
+    animation-name: fadein;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+
+    &__paragraph {
+        margin: 0;
+    }
+
+    &__contact-me {
+        // font-style: italic;
+        color: black;
+        text-decoration: underline;
+        transition: color 0.5s ease;
+
+        &:hover {
+            cursor: pointer;
+            color: #999999;
+        }
+    }
+
+    &__link {
+        color: black;
+        transition: color 0.5s ease;
+        &:link, &:visited {
+            color: black;
+        }
+        &:hover {
+            color: #999999;
+        }
+    }
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0%;
+    }
+    to {
+        opacity: 100%;
+    }
+}

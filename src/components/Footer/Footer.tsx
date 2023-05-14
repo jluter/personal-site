@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.scss';
-import LineAnimation from '../LineAnimation/LineAnimation';
+// import LineAnimation from '../LineAnimation/LineAnimation';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { HiMail } from 'react-icons/hi';
 
