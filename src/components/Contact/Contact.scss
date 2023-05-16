@@ -1,0 +1,23 @@
+.contact {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: absolute;
+    bottom: calc(var(--spacing));
+    right: var(--spacing);
+
+    &__link {
+        color: black;
+        transition: color 0.3s ease-in;
+        &:hover {
+            color: #333333;
+        }
+        &:visited {
+            color: black;
+        }
+    }
+}
+
+.react-icons {
+    size: calc(var(--spacing)*5)
+}

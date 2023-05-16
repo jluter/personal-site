@@ -26,7 +26,7 @@ const Header: React.FC<Props> = ({cameraState, handleHeaderListClick}) => {
       <ul className='header__list'>
         <li className='header__list-item' onClick={() => handleHeaderListClick(x, 1, 2.5, 'works')}>Works</li>
         <li className='header__list-item' onClick={() => handleHeaderListClick(-x, 1, 2.5, 'about')}>About</li>
-        <li className='header__list-item' onClick={() => handleHeaderListClick(x, -1, 2.5, 'contact')}>Contact</li>
+        <li className='header__list-item' onClick={() => handleHeaderListClick(x, 0, 2.5, 'contact')}>Contact</li>
       </ul>
     </header>
   );
