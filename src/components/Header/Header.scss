@@ -11,6 +11,13 @@
         left: var(--spacing);
         width: 100%;
         font-weight: bold;
+        opacity: 0%;
+
+        animation-name: titleload;
+        animation-delay: 4s;
+        animation-duration: 4s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 1;
 
         &:hover {
             cursor: pointer;
@@ -31,6 +38,13 @@
         position: absolute;
         top: var(--spacing);
         right: var(--spacing);
+        opacity: 0%;
+
+        animation-name: listload;
+        animation-delay: 5.5s;
+        animation-duration: 4s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 1;
 
         @include mixins.small-mobile {
             flex-direction: column;
@@ -54,5 +68,35 @@
             width: 100%;
         }
 
+    }
+}
+
+@keyframes titleload {
+    0% {
+        opacity: 0%;
+        left: -50%;
+    }
+    50% {
+        opacity: 0%;
+        left: 0;
+    }
+    100% {
+        opacity: 100%;
+        left: var(--spacing);
+    }
+}
+
+@keyframes listload {
+    0% {
+        opacity: 0%;
+        // right: -50%;
+    }
+    50% {
+        opacity: 0%;
+        right: 0;
+    }
+    100% {
+        opacity: 100%;
+        right: var(--spacing);
     }
 }

@@ -9,9 +9,13 @@ interface Props {
 
 let x = Math.min(1.5, (window.innerWidth/window.innerHeight)*2);
 
+// const iconSize = '2rem';
+// console.log(window.innerWidth);
+
+
 const Contact: React.FC<Props> = ({handleHeaderListClick}) => {
   return (
-    <IconContext.Provider value={{ className: "react-icons", size: `2rem` }}>
+    <IconContext.Provider value={{ className: "react-icons", size: `${x}rem` }}>
       <div className="contact">
         <a
           href="https://github.com/jluter"

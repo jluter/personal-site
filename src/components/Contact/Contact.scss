@@ -1,11 +1,13 @@
+@use '../../styles/mixins';
+
 .contact {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     position: absolute;
-    bottom: calc(var(--spacing));
+    bottom: var(--spacing);
     right: var(--spacing);
-    animation-name: fadein;
+    animation-name: flyin;
     animation-duration: 3s;
     animation-iteration-count: 1;
 
@@ -22,7 +24,7 @@
 }
 
 .react-icons {
-    size: calc(var(--spacing)*5);
+    size: calc(var(--spacing)*10);
     color: black;
     transition: color 0.3s ease-in;
     &:hover {
@@ -32,6 +34,10 @@
         color: black;
     }
 
+    @include mixins.desktop {
+        size: calc(var(--spacing)*7);
+    }
+
 }
 
 @keyframes fadein {
@@ -39,6 +45,20 @@
         opacity: 0%;
     }
     to {
+        opacity: 100%;
+    }
+}
+
+@keyframes flyin {
+    0% {
+        bottom: -50%;
+        opacity: 0%;
+    }
+    50% {
+        opacity: 20%;
+    }
+    100% {
+        bottom: var(--spacing);
         opacity: 100%;
     }
 }

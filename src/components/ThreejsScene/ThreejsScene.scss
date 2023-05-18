@@ -1,6 +1,9 @@
 .three-js {
     position: absolute;
     z-index: -1;
+    animation-name: threejsload;
+    animation-duration: 7s;
+    animation-iteration-count: 1;
 
         &::before {
         content: "";
@@ -14,5 +17,14 @@
         top: 0;
         left: 0;
         z-index: -2;
+    }
+}
+
+@keyframes threejsload {
+    from {
+        opacity: 0%;
+    }
+    to {
+        opacity: 100%;
     }
 }
