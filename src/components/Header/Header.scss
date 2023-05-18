@@ -45,7 +45,7 @@
         animation-duration: 4s;
         animation-fill-mode: forwards;
         animation-iteration-count: 1;
-
+        
         @include mixins.small-mobile {
             flex-direction: column;
             line-height: calc(var(--spacing)*2);
