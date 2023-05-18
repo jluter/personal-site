@@ -5,6 +5,9 @@
     position: absolute;
     bottom: calc(var(--spacing));
     right: var(--spacing);
+    animation-name: fadein;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
 
     &__link {
         color: black;
@@ -19,5 +22,23 @@
 }
 
 .react-icons {
-    size: calc(var(--spacing)*5)
+    size: calc(var(--spacing)*5);
+    color: black;
+    transition: color 0.3s ease-in;
+    &:hover {
+        color: #333333;
+    }
+    &:visited {
+        color: black;
+    }
+
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0%;
+    }
+    to {
+        opacity: 100%;
+    }
 }
