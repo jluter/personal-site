@@ -2,8 +2,6 @@ import React, { useRef, useEffect, useState} from "react";
 import './ThreejsScene.scss';
 import * as THREE from "three";
 import { lerp } from "three/src/math/MathUtils";
-// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-// import grain from '../../assets/images/blur.jpg';
 
 interface Props {
   mainElementWidth: number;
@@ -15,12 +13,6 @@ interface Props {
   };
 }
 
-//Types for getting mouse position
-// interface MousePosition {
-//   x: number;
-//   y: number;
-// }
-
 const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight, cameraState }) => {
 
   const [lerpFromX, setLerpFromX] = useState<number>(0);
@@ -30,23 +22,6 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight, cam
   const cameraX = cameraState.cameraX;
   const cameraY = cameraState.cameraY;
   const cameraZ = cameraState.cameraZ;
-  // const cameraPosition = new THREE.Vector3(cameraX, cameraY, cameraZ)
-
-  //Code to get value of mouse position
-  // const [position, setPosition] = useState<MousePosition>({ x: 0, y: 0 });
-  // useEffect(() => {
-
-  //   const handleMouseMove = (event: MouseEvent) => {
-  //     event.preventDefault();
-  //     setPosition({ x: event.clientX, y: event.clientY });
-  //   };
-
-  //   window.addEventListener('mousemove', handleMouseMove);
-
-  //   return () => {
-  //     window.removeEventListener('mousemove', handleMouseMove);
-  //   }
-  // }, []);
 
   const canvasRef = useRef<HTMLDivElement>(null); //Tells React where to mount three.js scene/canvas
   
@@ -74,7 +49,6 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight, cam
 
     }
 
-    // const controls = new OrbitControls(camera, renderer.domElement);
     const geometry = new THREE.SphereGeometry( 1, 64, 64);
     
     const vertexShader = `
@@ -96,7 +70,6 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight, cam
     const fragmentShader = `
     varying vec2 vUv;
     uniform float time;
-    // uniform sampler2D grainTexture;
     
     varying vec2 vScreenSpace;
     varying vec3 vNormal;
@@ -210,7 +183,6 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight, cam
     }
     
     void main() {
-        // float noiseVal = noise(vUv * 10.0 + time * 0.5);
         vec3 position = vPosition;
         float noiseVal = cnoise(position * 10.0);
         vec3 color = vec3(noiseVal * 0.5 + 0.5);
@@ -218,7 +190,6 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight, cam
 
         float light = dot(vNormal * (sin(vScreenSpace.x) *0.5 + 0.5) + 0.75, normalize(vec3(0.0, 0.0, 0.5)));
 
-        // float ttt = texture2D(grainTexture, vScreenSpace + 1.0).r;
 
         //strokes
         float stroke = cos((vScreenSpace.x - vScreenSpace.y) * 500.0);
@@ -231,13 +202,7 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight, cam
         stroke += (smallNoise - sin(stroke)) + (bigNoise - cos(stroke) * 0.5); 
         stroke = smoothstep(light - 0.5, light + 0.5,stroke);
 
-        gl_FragColor = vec4(vNormal, 1.0);
-        gl_FragColor = vec4(vScreenSpace, 0.0, 1.0);
-        gl_FragColor = vec4(vec3(light), 1.0);
-        // gl_FragColor = vec4(vec3(ttt), 1.0);
         gl_FragColor = vec4(vec3(stroke), 0.85);
-        // gl_FragColor = vec4(vec3(smallNoise * 0.5 + 0.5), 1.0);
-        // gl_FragColor = vec4(vec3(bigNoise * 0.5 + 0.5), 1.0);
     }
 `;
 
@@ -246,7 +211,6 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight, cam
       side: THREE.DoubleSide,
       uniforms: {
         time: { value: 0.0 },
-        // map: { value: new THREE.TextureLoader().load(grain) }
       },
       vertexShader,
       fragmentShader
@@ -264,7 +228,6 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight, cam
     
     const animate = () => {
       
-      // controls.update();
       requestAnimationFrame( animate );
 
       camera.position.lerp(new THREE.Vector3(cameraX, cameraY, cameraZ), 0.033);
@@ -285,12 +248,6 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight, cam
 
       sphere.rotation.x += 0.00066
       sphere.rotation.y += 0.0033;
-      // sphere.rotation.z += 0.5;
-      // sphere.position.x = -1;
-      // sphere.position.y = -0.5;
-
-      // camera.position.z += Math.cos(sphere.rotation.y) * 0.005;
-      // camera.position.z = 1;
 
       renderer.render( scene, camera );
     }

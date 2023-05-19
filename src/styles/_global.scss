@@ -42,17 +42,11 @@ body {
     background: linear-gradient(35deg, #ffffff, #808080, #000000, #808080, #ffffff);
     animation: gradient 25s ease infinite;
     background-size: 1000% 1000%;
-    // color: $timberwolf;
     line-height: 1.2rem;
 }
 
 a {
-    color: $laurel-green;
     margin: none;
-
-    &:hover {
-        color: $fern-green;
-    }
 }
 
 h1 {

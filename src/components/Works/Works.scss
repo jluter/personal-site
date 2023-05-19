@@ -25,7 +25,6 @@
     -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
     mask-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
     direction: rtl;
-    // border: 1px solid blue;
     
 
     @include mixins.desktop {
@@ -33,11 +32,6 @@
     }
 
     -ms-overflow-style: none;
-    // scrollbar-width: none;
-
-    // &::-webkit-scrollbar {
-    //     display: none;
-    // }
 
 
     &__item {
@@ -92,7 +86,6 @@
         padding: 0.25rem 0.5rem;
         background-color: #e5e5e5;
         border-radius: 5px;
-        // border: 1px solid red;
         align-self: flex-end;
 
         @include mixins.tablet {
@@ -123,7 +116,6 @@
 
         width: calc(100% - var(--spacing));
         border-top: none;
-        // text-align: center;
         background-color: #e5e5e5;
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;

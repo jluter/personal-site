@@ -6,10 +6,6 @@ import Header from "./Components/Header/Header";
 import Works from "./Components/Works/Works";
 import About from "./Components/About/About";
 import Contact from "./Components/Contact/Contact";
-// import Footer from './Components/Footer/Footer';
-// import LineAnimation from './Components/LineAnimation/LineAnimation';
-// import DesktopDescription from './Components/DesktopDescription/DesktopDescription';
-// import BgAnimation from './Components/BgAnimation/BgAnimation';
 
 interface CameraState {
   cameraX: number;
@@ -19,13 +15,9 @@ interface CameraState {
 }
 
 const App: React.FC = () => {
-  // const [windowWidth, setWindoWidth] = useState(window.innerWidth);
-  // const [windowHeight, setWindoHeight] = useState(window.innerHeight);
 
   useEffect(() => {
     function handleResize() {
-      // setWindoWidth(window.innerWidth);
-      // setWindoHeight(window.innerHeight);
       if (mainElementRef.current) {
         setElementHeight(mainElementRef.current.clientHeight);
         setElementWidth(mainElementRef.current.clientWidth);
@@ -83,7 +75,6 @@ const App: React.FC = () => {
           mainElementHeight={mainElementHeight}
           cameraState={cameraState}
         />
-        {/* <Footer /> */}
       </main>
     </div>
   );

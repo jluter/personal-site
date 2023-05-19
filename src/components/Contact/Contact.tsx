@@ -9,9 +9,6 @@ interface Props {
 
 let x = Math.min(1.5, (window.innerWidth/window.innerHeight)*2);
 
-// const iconSize = '2rem';
-// console.log(window.innerWidth);
-
 
 const Contact: React.FC<Props> = ({handleHeaderListClick}) => {
   return (
