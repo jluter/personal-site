@@ -23,9 +23,8 @@ const Contact: React.FC<Props> = ({handleHeaderListClick}) => {
           target="_blank"
           rel="norefferer noopener"
         >
-          <div>
+            <div className="contact__text">github.com/jluter</div>
             <FaGithub />
-          </div>
         </a>
         <a
           href="https://www.linkedin.com/in/jakob-luter/"
@@ -33,9 +32,8 @@ const Contact: React.FC<Props> = ({handleHeaderListClick}) => {
           target="_blank"
           rel="norefferer noopener"
         >
-          <div>
+            <div className="contact__text">linked.com/in/jakob-luter</div>
             <FaLinkedin />
-          </div>
         </a>
         <a
           href="mailto:jakobluter20@gmail.com"
@@ -43,9 +41,8 @@ const Contact: React.FC<Props> = ({handleHeaderListClick}) => {
           target="_blank"
           rel="norefferer noopener"
         >
-          <div>
+            <div className="contact__text">jakobluter20@gmail.com</div>
             <FaAt />
-          </div>
         </a>
         <a
           href={resume}
@@ -53,9 +50,8 @@ const Contact: React.FC<Props> = ({handleHeaderListClick}) => {
           target="_blank"
           rel="norefferer noopener"
         >
-          <div>
+            <div className="contact__text">resume</div>
             <FaFilePdf />
-          </div>
         </a>
       </div>
     </IconContext.Provider>

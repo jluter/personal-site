@@ -12,14 +12,24 @@
     animation-iteration-count: 1;
 
     &__link {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
         color: black;
-        transition: color 0.3s ease-in;
-        &:hover {
-            color: #333333;
-        }
+        text-decoration: none;
+        transition: color 0.3s ease-in; 
         &:visited {
             color: black;
         }
+        &:hover {
+            color: #e6e6e6;
+        }
+
+    }
+
+    &__text {
+        padding-right: var(--spacing);
+
     }
 }
 

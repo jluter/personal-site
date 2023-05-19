@@ -1,8 +1,35 @@
 @use './typography' as *;
 @use './variables' as *;
 
+html {
+    scroll-behavior: smooth;
+}
+
 *, *::before, *::after {
     box-sizing: border-box;
+}
+
+* {
+    scrollbar-width: none;
+    scrollbar-color: #333333 #e5e5e5;
+  }
+
+  *::-webkit-scrollbar {
+    width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #e5e5e5;
+    height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #333333;
+    border-radius: 10px;
+    max-height: 50px;
+    background-clip: content-box;
+    border-color: transparent;
+    border-style: solid;
 }
 
 :root {
