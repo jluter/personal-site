@@ -1,5 +1,14 @@
-@use '../../styles/typography' as *;
 @use '../../styles/mixins';
+
+@font-face {
+    font-family: 'Archivo';
+    src: url('../assets/fonts/Archivo.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    // font-display: swap;
+}
+
+$Archivo: 'Archivo';
 
 .header {
     z-index: 10;
@@ -14,7 +23,7 @@
         opacity: 0%;
 
         animation-name: titleload;
-        animation-delay: 4s;
+        animation-delay: 2.5s;
         animation-duration: 4s;
         animation-fill-mode: forwards;
         animation-iteration-count: 1;
@@ -41,7 +50,7 @@
         opacity: 0%;
 
         animation-name: listload;
-        animation-delay: 5.5s;
+        animation-delay: 3s;
         animation-duration: 4s;
         animation-fill-mode: forwards;
         animation-iteration-count: 1;

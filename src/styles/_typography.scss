@@ -1,16 +1,9 @@
 @font-face {
     font-family: 'Archivo';
-    src: url(../assets/fonts/Archivo.woff2) format('woff2');
+    src: url('../assets/fonts/Archivo.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
-    font-display: swap;
+    // font-display: swap;
 }
 
-$SourceSansPro: 'Archivo';
-
-// @font-face {
-//     font-family: 'SourceSansPro';
-//     src: url(../assets/fonts/SourceSansPro-Light.ttf) format('ttf');
-// }
-
-// $SourceSansPro: 'SourceSansPro';
+$Archivo: 'Archivo';
