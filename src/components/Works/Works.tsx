@@ -40,20 +40,20 @@ const Works: React.FC = () => {
   });
   const worksArray = [
     {
-      title: "Ranch Website",
+      id: 1, title: "Ranch Website",
       img: ranchWebsiteImage,
       description:
         "A mockup site for a local farm/ranch. Features custom styling and WordPress theme building.", link:"https://ranch-website.net"
     },
-    { title: "Pollution Poll", img: pollutionPoll, description: "A full-stack application made to assist in climate awareness. Created in React and Node.js, utilizing Axios for HTTP requests, and consuming the Climatiq REST API.", link:"https://github.com/jluter/pollution-poll" },
-    { title: "12Right", img: oneTwoRight, description: "Custom WordPress site made in under 24 hours for a hangar at San Antonio International Airport. Assisted in the $15 million sale of the hangar by contracting company.", link:"https://12right.com" },
-    { title: "Sherco USA", img: shercoUSA, description: "Company site for US importer of Sherco Motorcycles. Wrote custom PHP, JavaScript, HTML, and CSS. Improved site speed, SEO, and security by managing hosting, automating backups, and implementing analytics.", link:"https://shercousa.com" },
-    { title: "FactoryONE Sherco", img: factoryOneSherco, description: "Race team site for Sherco USA. Involved cross-collaboration with Sherco Marketing team and Progressive sponsorhsip team.", link:"https://factoryonesherco.com/" },
-    { title: "FactoryONE Motorsports", img: factoryOneMotorsports, description: "Off-road aftermarket ecommerce site. Increased conversion rate by 5% month over month and 20,000+ impressions by integrating with Meta and Google business & analytics platform.", link:"https://factoryonemotorsports.com" },
-    { title: "Sherco Vault", img: shercoVault, description: "Subscription based WordPress site for US Sherco Dealers resulting in $12,000+ monthly. Features site security and custom plugins via JavaScript, PHP, HTML, and CSS.", link:"https://vault.shercousa.com" },
-    { title: "San Antonio Chess Club", img: sanAntonioChessClub, description: "Local chess club site for San Antonio. Contracted to automate events and registration.", link:"https://sanantoniochessclub.com" },
-    { title: "Complete Chess", img: completeChess, description: "Afterschool chess program based. Contracted to assist with site maintenance, event registration, and automating email marketing.", link:"https://completechesseducation.com" },
-    { title: "Complete Chess Foundation", img: compelteChessFoundation, description: "Non-profit organization supporting San Antonio youths through chess. Contracted for site maintenance and stability, event registration, and automating digital marketing.", link:"https://completechessfoundation.org" },
+    { id: 2, title: "Pollution Poll", img: pollutionPoll, description: "A full-stack application made to assist in climate awareness. Created in React and Node.js, utilizing Axios for HTTP requests, and consuming the Climatiq REST API.", link:"https://github.com/jluter/pollution-poll" },
+    { id: 3, title: "12Right", img: oneTwoRight, description: "Custom WordPress site made in under 24 hours for a hangar at San Antonio International Airport. Assisted in the $15 million sale of the hangar by contracting company.", link:"https://12right.com" },
+    { id: 4, title: "Sherco USA", img: shercoUSA, description: "Company site for US importer of Sherco Motorcycles. Wrote custom PHP, JavaScript, HTML, and CSS. Improved site speed, SEO, and security by managing hosting, automating backups, and implementing analytics.", link:"https://shercousa.com" },
+    { id: 5, title: "FactoryONE Sherco", img: factoryOneSherco, description: "Race team site for Sherco USA. Involved cross-collaboration with Sherco Marketing team and Progressive sponsorhsip team.", link:"https://factoryonesherco.com/" },
+    { id: 6, title: "FactoryONE Motorsports", img: factoryOneMotorsports, description: "Off-road aftermarket ecommerce site. Increased conversion rate by 5% month over month and 20,000+ impressions by integrating with Meta and Google business & analytics platform.", link:"https://factoryonemotorsports.com" },
+    { id: 7, title: "Sherco Vault", img: shercoVault, description: "Subscription based WordPress site for US Sherco Dealers resulting in $12,000+ monthly. Features site security and custom plugins via JavaScript, PHP, HTML, and CSS.", link:"https://vault.shercousa.com" },
+    { id: 8, title: "San Antonio Chess Club", img: sanAntonioChessClub, description: "Local chess club site for San Antonio. Contracted to automate events and registration.", link:"https://sanantoniochessclub.com" },
+    { id: 9, title: "Complete Chess", img: completeChess, description: "Afterschool chess program based. Contracted to assist with site maintenance, event registration, and automating email marketing.", link:"https://completechesseducation.com" },
+    { id: 10, title: "Complete Chess Foundation", img: compelteChessFoundation, description: "Non-profit organization supporting San Antonio youths through chess. Contracted for site maintenance and stability, event registration, and automating digital marketing.", link:"https://completechessfoundation.org" },
   ];
 
   const handleWorksTitleClick = (aSingleWork: WorksListState) => {
@@ -72,12 +72,13 @@ const Works: React.FC = () => {
       <ul className="works-list">
         {worksArray.map((work) => (
           <li
+            key={work.id}
             onClick={() => {
               handleWorksTitleClick(work);
             }}
             className="works-list__item"
           >
-            <p className="works-list__item--text">{work.title}</p>
+            <p key={`title_${work.id}`} className="works-list__item--text">{work.title}</p>
           </li>
         ))}
       </ul>
