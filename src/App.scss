@@ -1,18 +1,5 @@
 @use './styles/mixins';
 
-
-.app {
-    background: linear-gradient(35deg, #ffffff, #808080, #000000, #808080, #ffffff);
-    animation: gradient 25s ease infinite;
-    background-size: 1000% 1000%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    content: "";
-}
-
 .main-container {
     border: 1px solid black;
     position: relative;
@@ -26,9 +13,7 @@
     animation-name: fadein;
     animation-duration: 5s;
     animation-iteration-count: 1;
-
 }
-
 @keyframes fadein {
     from {
         opacity: 0%;

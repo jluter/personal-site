@@ -7,7 +7,6 @@ import Works from "./Components/Works/Works";
 import About from "./Components/About/About";
 import Contact from "./Components/Contact/Contact";
 
-
 interface CameraState {
   cameraX: number;
   cameraY: number;
@@ -17,10 +16,8 @@ interface CameraState {
 
 const App: React.FC = () => {
 
-
   useEffect(() => {
     function handleResize() {
-
       if (mainElementRef.current) {
         setElementHeight(mainElementRef.current.clientHeight);
         setElementWidth(mainElementRef.current.clientWidth);
