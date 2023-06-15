@@ -1,6 +1,7 @@
 @font-face {
     font-family: 'Archivo';
-    src: url('../assets/fonts/Archivo.woff2') format('woff2');
+    src: local("Archivo"), 
+     url('../assets/fonts/Archivo-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
