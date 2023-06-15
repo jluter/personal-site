@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState} from "react";
 import './ThreejsScene.scss';
 import * as THREE from "three";
 import { lerp } from "three/src/math/MathUtils";
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 interface Props {
   mainElementWidth: number;
@@ -224,18 +225,20 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight, cam
     scene.add(sphereClone);
 
     
-
     
+    // const controls = new OrbitControls(camera, renderer.domElement);
     const animate = () => {
+      
+      // controls.update();
       
       requestAnimationFrame( animate );
 
       camera.position.lerp(new THREE.Vector3(cameraX, cameraY, cameraZ), 0.033);
-
+      
       setLerpFromX(cameraX);
       setLerpFromY(cameraY);
       setLerpFromZ(cameraZ);
-
+      
       //create rotation for smaller sphere 
       let radius = 1.5;
       let date = Date.now() * 0.00077;
@@ -246,12 +249,12 @@ const ThreejsScene: React.FC<Props> = ({mainElementWidth, mainElementHeight, cam
 
       material.uniforms.time.value += 0.1;
 
-      sphere.rotation.x += 0.00066
+      sphere.rotation.x += 0.0066
       sphere.rotation.y += 0.0033;
-
+      
       renderer.render( scene, camera );
     }
-
+    
     let onWindowResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();

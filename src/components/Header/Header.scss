@@ -22,9 +22,10 @@ $Archivo: 'Archivo';
         opacity: 0%;
 
         animation-name: titleload;
-        animation-delay: 2.5s;
-        animation-duration: 4s;
+        animation-delay: 1s;
+        animation-duration: 3s;
         animation-fill-mode: forwards;
+        animation-timing-function: cubic-bezier(.12,.74,.11,.89);
         animation-iteration-count: 1;
 
         &:hover {
@@ -49,8 +50,8 @@ $Archivo: 'Archivo';
         opacity: 0%;
 
         animation-name: listload;
-        animation-delay: 3s;
-        animation-duration: 4s;
+        animation-delay: 1.25s;
+        animation-duration: 1.25s;
         animation-fill-mode: forwards;
         animation-iteration-count: 1;
 
@@ -82,12 +83,9 @@ $Archivo: 'Archivo';
 @keyframes titleload {
     0% {
         opacity: 0%;
-        left: -50%;
-    }
-    50% {
-        opacity: 0%;
         left: 0;
     }
+
     100% {
         opacity: 100%;
         left: var(--spacing);
@@ -97,11 +95,9 @@ $Archivo: 'Archivo';
 @keyframes listload {
     0% {
         opacity: 0%;
-    }
-    50% {
-        opacity: 0%;
         right: 0;
     }
+
     100% {
         opacity: 100%;
         right: var(--spacing);
