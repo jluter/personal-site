@@ -1,14 +1,5 @@
 @use '../../styles/mixins';
 
-@font-face {
-    font-family: 'Archivo';
-    src: url('../assets/fonts/Archivo.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-
-$Archivo: 'Archivo';
-
 .header {
     z-index: 10;
     display: flex;
